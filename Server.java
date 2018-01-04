@@ -1,7 +1,4 @@
 
-*/
-*   Server handling info between clients.
-*
-*
-*
-/*
+
+
+Hej Christian
