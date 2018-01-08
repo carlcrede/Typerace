@@ -1,28 +1,28 @@
-import java.awt.Component;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.Timer;
 
 public class Main extends JFrame implements ActionListener {
 	
 	JButton start, quit;
-	JLabel label;
+	JTextArea txtarea;
 	JTextField txtfield;
 	
 	int DEFAULT_HEIGHT = 1000;
 	int DEFAILT_HEIGHT = 1000;
+	
 
 	//Client testrun;	
 
 	public Main() {
-		
+				
 		getContentPane().setLayout(new GridLayout(5,1));
 		
 		// the animation / progressbar needs to go in the top
@@ -32,9 +32,9 @@ public class Main extends JFrame implements ActionListener {
 		//
 		
 		// JLabel for the .txt file
-		label = new JLabel("Placeholder for .txt file");
-		label.setAlignmentX(Component.CENTER_ALIGNMENT);
-		getContentPane().add(label);
+		txtarea = new JTextArea("Let's get ready to rumble!");
+		txtarea.setLineWrap(true);
+		getContentPane().add(txtarea);
 		
 		// JTextField for user input
 		txtfield = new JTextField(100);
@@ -68,15 +68,23 @@ public class Main extends JFrame implements ActionListener {
 		Thread test = new Thread(testrun);
 		test.start();*/
 	}
-
+	
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+		
 		if (e.getSource() == quit) {
 			JOptionPane.showMessageDialog(null, "Thanks for using DTUeven Type?", "Goodbye", JOptionPane.INFORMATION_MESSAGE);
 			System.exit(0);
 		}
-		
+		else if (e.getSource() == start) {
+			
+			// makes a request to start the game to the server
+			// need a countdown, TODO
+			
+		}
+			
 	}
+		
 	
 
 	public static void main(String args[]) {
@@ -90,6 +98,7 @@ public class Main extends JFrame implements ActionListener {
 		doIt.setSize(800, 600); // Set size
 		doIt.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		doIt.setVisible(true);
+		doIt.setLocationRelativeTo(null);
 		doIt.setResizable(true);
 	}
 
