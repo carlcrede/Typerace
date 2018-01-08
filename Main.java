@@ -1,85 +1,64 @@
-import java.awt.ComponentOrientation;
-import java.awt.Container;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
+import java.awt.Component;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
 public class Main extends JFrame implements ActionListener {
-
-	final static boolean shouldFill = true;
-	final static boolean shouldWeightX = true;
-	final static boolean RIGHT_TO_LEFT = false;
+	
+	JButton start, quit;
+	JLabel label;
+	JTextField txtfield;
 	
 	int DEFAULT_HEIGHT = 1000;
 	int DEFAILT_HEIGHT = 1000;
 
-	Client testrun;
-	
-	public static void addComponentsToPane (Container pane) {
-		
-		// testing out how to use GridBagLayout
-		
-		if (RIGHT_TO_LEFT) {
-			pane.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-		}
-		
-		JButton start, quit;
-		JLabel label;
-		JTextField txtfield;
-		
-		pane.setLayout(new GridBagLayout());
-		GridBagConstraints c = new GridBagConstraints();
-		
-		if (shouldFill) {
-			c.fill = GridBagConstraints.HORIZONTAL;
-			
-		}
-		// adding start button
-		start = new JButton ("Start");
-		if (shouldWeightX) {
-			c.weightx = 0.5;
-		}
-		
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.gridx = 0;
-		c.gridy = 0;
-		pane.add(start, c);
-		
-		// adding quit button
-		quit = new JButton ("Quit");
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.gridx = 1;
-		c.gridy = 0;
-		pane.add(quit, c);
-		
-		
-		
-	}
-	
-	private static void createAndShowGUI() {
-		
-		
-		// creating and setting up window
-		JFrame frame = new JFrame ("GridBagLayoutDemo");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		// setting up content pane
-		addComponentsToPane(frame.getContentPane());
-		
-		// display window
-		frame.pack();
-		frame.setVisible(true);
-	}
-	
+	//Client testrun;	
 
 	public Main() {
-
+		
+		getContentPane().setLayout(new GridLayout(5,1));
+		
+		// the animation / progressbar needs to go in the top
+		/*
+		 * ANIMATION ADD HERE
+		 */
+		//
+		
+		// JLabel for the .txt file
+		label = new JLabel("Placeholder for .txt file");
+		label.setAlignmentX(Component.CENTER_ALIGNMENT);
+		getContentPane().add(label);
+		
+		// JTextField for user input
+		txtfield = new JTextField(100);
+		getContentPane().add(txtfield);
+		
+		// scrollpane
+		
+		JScrollPane scrollPane = new JScrollPane(txtfield);
+		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		getContentPane().add(scrollPane);
+		
+		
+		// start button
+		start = new JButton ("Start");
+		start.addActionListener(this);
+		getContentPane().add(start);
+		
+		// quit button
+		quit = new JButton ("Quit");
+		quit.addActionListener(this);
+		getContentPane().add(quit);
+		
+		
 		// gotta make this work!
 		/*getContentPane().setLayout(new GridLayout(2, 1));
 
@@ -90,25 +69,39 @@ public class Main extends JFrame implements ActionListener {
 		test.start();*/
 	}
 
-	public void actionPerformed(ActionEvent arg0) {
+	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-
+		if (e.getSource() == quit) {
+			JOptionPane.showMessageDialog(null, "Thanks for using DTUeven Type?", "Goodbye", JOptionPane.INFORMATION_MESSAGE);
+			System.exit(0);
+		}
+		
 	}
 	
 
 	public static void main(String args[]) {
+
+		Main doIt = new Main();
+		
+		JOptionPane.showMessageDialog(null,
+				"Welcome to the single most important program in all of Java history.\n" + "Sit back, relax, and enjoy.",
+				"Prepare to have your mind blown!", JOptionPane.INFORMATION_MESSAGE);
+		doIt.setTitle("TypeRacer 1.0"); // Set title on window
+		doIt.setSize(800, 600); // Set size
+		doIt.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		doIt.setVisible(true);
+		doIt.setResizable(true);
+	}
 
 		/*
 		 * COMMENTED OUT WHILE TESTING GRIDBAG
 		 */
 		
 		/*Main main = new Main();
-
-		main.setTitle("TypeRacer 1.0"); // Set title on window
-		main.setSize(800, 600); // Set size
-		main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		main.setVisible(true);
-		main.setResizable(true);*/
-	}
+		*/
+		
+		
 }
+  
+		
 	
