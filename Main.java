@@ -77,6 +77,7 @@ public class Main extends JFrame implements ActionListener {
 			System.exit(0);
 		}
 		else if (e.getSource() == start) {
+			start.setText("GO!");
 			
 			// makes a request to start the game to the server
 			// need a countdown, TODO
