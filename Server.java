@@ -5,13 +5,13 @@
 *  clients
 *
 */
-import java.awt.Dimension;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
@@ -20,6 +20,12 @@ public class Server extends JPanel implements Runnable {
 	Main parent;
 	JTextArea txt;
 	ArrayList<String> wordsInFile;
+	
+	 // Do we need this??
+	public Server(Main parent) {
+		this.parent = parent;
+		this.txt = parent.txtarea;
+	}
 	
 	public void getFile() throws FileNotFoundException {
 		
@@ -52,27 +58,28 @@ public class Server extends JPanel implements Runnable {
 		// printing how many words are in the file.
 		// System.out.println(wordsInFile.size());
 
-		for (int i = 0; i < wordsInFile.size(); i++) {
-
-			this.txt.setText(wordsInFile.get(i) + " ");
+			for (int i = 0; i < wordsInFile.size(); i++) {
+				this.txt.setText(this.txt.getText() + wordsInFile.get(i) + " ");
+				
+			//System.out.println(wordsInFile.get(i) + " ");
+				
 			}
 	}
 
 		// testing out if we can print a specific word: SUCCESS
 		// System.out.println(wordsInFile.get(5));	
 	
-	/*
-	 * Do we need this??
-	public Server(Main parent) {
-		this.parent = parent;
-		this.txt = parent.txtarea;
-	}*/
 
 	
 	 // Trying to make server, don't need thread. Just yet..
 	public void run() {
 		
-		
+		try {
+			getFile();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 			
 		
 	}

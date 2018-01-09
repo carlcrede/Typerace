@@ -1,80 +1,96 @@
-import java.awt.GridLayout;
+import java.awt.ComponentOrientation;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.Timer;
 
 public class Main extends JFrame implements ActionListener {
 	
 	JButton start, quit;
 	JTextArea txtarea;
 	JTextField txtfield;
-	
 	Server txtFile;
 	
 	public int DEFAULT_HEIGHT = 800;
 	public int DEFAULT_WIDTH = 600;
 	
-
-	//Client testrun;	
-
+	final static boolean shouldFill = true;
+    final static boolean shouldWeightX = true;
+    final static boolean RIGHT_TO_LEFT = false;
+	    
 	public Main() {
 				
-		getContentPane().setLayout(new GridLayout(5,1));
+		if (RIGHT_TO_LEFT) {
+			setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+		}
+		getContentPane().setLayout(new GridBagLayout());
 		
-		// the animation / progressbar needs to go in the top
-		/*
-		 * ANIMATION ADD HERE
-		 */
-		//
+		GridBagConstraints c = new GridBagConstraints();
 		
-		// JLabel for the .txt file
-		txtarea = new JTextArea();
+		if (shouldFill) {
+			c.fill = GridBagConstraints.HORIZONTAL;
+		}
+		
+		 //
+        /*
+         * insert the animation here
+         * 
+         */
+		// the area where the .txt file is suppose to be
+		
+        txtarea = new JTextArea();
+		txtarea.setEditable(false);
+		txtarea.setHighlighter(null);
 		txtarea.setLineWrap(true);
-		getContentPane().add(txtarea);
-		
-		// txt file thread .. Is it needed??
-		
-		txtFile = new Server(this);
-		Thread tf = new Thread(txtFile);
-		tf.start();
-		
-		// JTextField for user input
-		txtfield = new JTextField(100);
-		getContentPane().add(txtfield);
-		
-		// scrollpane
-		
-		JScrollPane scrollPane = new JScrollPane(txtfield);
-		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		getContentPane().add(scrollPane);
-		
-		
-		// start button
-		start = new JButton ("Start");
-		start.addActionListener(this);
-		getContentPane().add(start);
-		
-		// quit button
-		quit = new JButton ("Quit");
-		quit.addActionListener(this);
-		getContentPane().add(quit);
-		
-		
-		// gotta make this work!
-		/*getContentPane().setLayout(new GridLayout(2, 1));
-
-		testrun = new Client(this);
-		getContentPane().add(testrun);
-
-		Thread test = new Thread(testrun);
-		test.start();*/
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.weightx = 0.7;
+        c.weighty = 0.5;
+        c.ipady = 100;
+        c.gridx = 0;
+        c.gridy = 0;
+        getContentPane().add(txtarea, c);
+        
+        // textfield where user writes the text
+        txtfield = new JTextField();
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.weightx = 0.7;
+        c.weighty = 0.5;
+        c.gridx = 0;
+        c.gridy = 1;
+        getContentPane().add(txtfield, c);
+        
+        
+        // start btn that makes a request to the server or 
+        // something like that. Then a timer, and a game i started
+        // when the other player(s) is/are ready.
+        start = new JButton("New Game");
+        start.addActionListener(this);
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.weightx = 0.3;
+        c.gridx = 1;
+        c.gridy = 0;
+        getContentPane().add(start, c);
+        
+        // quit btn that quits the game.
+        quit = new JButton("Quit");
+        quit.addActionListener(this);
+        c.weightx = 0.3;
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.gridx = 1;
+        c.gridy = 1;
+        getContentPane().add(quit, c);
+        
+        // thread
+        txtFile = new Server(this);
+        Thread tf = new Thread(txtFile);
+        tf.start();
 	}
 	
 	public void actionPerformed(ActionEvent e) {
@@ -93,16 +109,15 @@ public class Main extends JFrame implements ActionListener {
 		}
 			
 	}
-		
-	
 
 	public static void main(String args[]) {
 
 		Main doIt = new Main();
 		
 		JOptionPane.showMessageDialog(null,
-				"Welcome to the single most important program in all of Java history.\n" + "Sit back, relax, and enjoy.",
-				"Prepare to have your mind blown!", JOptionPane.INFORMATION_MESSAGE);
+		"Welcome to the DTUeven Type?\n" + "Our take on the classic online typing game.\n" + "Have fun!",
+		"Welcome to DTUeven Type?", JOptionPane.INFORMATION_MESSAGE);
+		
 		doIt.setTitle("TypeRacer 1.0"); // Set title on window
 		doIt.setSize(800, 600); // Set size
 		doIt.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
