@@ -14,7 +14,7 @@ import javax.swing.JTextField;
 public class Main extends JFrame implements ActionListener {
 	
 	JButton start, quit;
-	JTextArea txtarea;
+	JTextArea txtarea, inputArea;
 	JTextField txtfield;
 	Server txtFile;
 	
@@ -43,8 +43,8 @@ public class Main extends JFrame implements ActionListener {
          * insert the animation here
          * 
          */
-		// the area where the .txt file is suppose to be
 		
+		// the area where the .txt file is suppose to be
         txtarea = new JTextArea();
 		txtarea.setEditable(false);
 		txtarea.setHighlighter(null);
@@ -58,13 +58,15 @@ public class Main extends JFrame implements ActionListener {
         getContentPane().add(txtarea, c);
         
         // textfield where user writes the text
-        txtfield = new JTextField();
+        inputArea = new JTextArea();
+        inputArea.setLineWrap(true);
+        inputArea.setHighlighter(null);
         c.fill = GridBagConstraints.HORIZONTAL;
         c.weightx = 0.7;
         c.weighty = 0.5;
         c.gridx = 0;
         c.gridy = 1;
-        getContentPane().add(txtfield, c);
+        getContentPane().add(inputArea, c);
         
         
         // start btn that makes a request to the server or 
