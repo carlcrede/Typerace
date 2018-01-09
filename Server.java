@@ -19,10 +19,6 @@ public class Server {
 
 	public static void main(String args[]) throws IOException {
 
-		// think this needs to be on the server side, so both players get the same file.
-		/*
-		 * I THINK IT ACTUALLY WORKS!!!!
-		 */
 		// the file path for the game's textfiles.
 		File dir = new File("C:\\Users\\Carl_\\Desktop\\DTU\\ingeniørarbejde\\3ugers\\Typerace\\Textfiles");
 
@@ -34,14 +30,13 @@ public class Server {
 
 		// instance of File needed for choosing a random file in the folder
 		File file = textFiles[random.nextInt(textFiles.length)];
-		// *** Maybe the lenght needs to be -1, because
 
 		// creating arraylist to put all words from file into
 		ArrayList<String> wordsInFile = new ArrayList<String>();
 
 		// using scanner for reading the file, which has been chosen by random
 		Scanner s = new Scanner(file);
-
+		s.close();
 		// adding each word to the arraylist as long as there still is a line in the
 		// file
 		while (s.hasNextLine())

@@ -101,16 +101,7 @@ public class Main extends JFrame implements ActionListener {
 		doIt.setVisible(true);
 		doIt.setLocationRelativeTo(null);
 		doIt.setResizable(true);
-	}
-
-		/*
-		 * COMMENTED OUT WHILE TESTING GRIDBAG
-		 */
-		
-		/*Main main = new Main();
-		*/
-		
-		
+	}		
 }
   
 		
