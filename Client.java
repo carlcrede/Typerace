@@ -27,18 +27,6 @@ public class Client extends JPanel implements Runnable {
 		rand = new Random();
 	}
 
-	public void readFile() {
-
-		try {
-			test = new BufferedReader(new FileReader("Test.txt"));
-		} 
-		catch (FileNotFoundException ex) {
-			System.out.println("File not found.");
-			
-		}
-
-	}
-
 	public void run() {
 
 			

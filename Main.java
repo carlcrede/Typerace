@@ -15,8 +15,10 @@ public class Main extends JFrame implements ActionListener {
 	JTextArea txtarea;
 	JTextField txtfield;
 	
-	int DEFAULT_HEIGHT = 1000;
-	int DEFAILT_HEIGHT = 1000;
+	Server txtFile;
+	
+	public int DEFAULT_HEIGHT = 800;
+	public int DEFAULT_WIDTH = 600;
 	
 
 	//Client testrun;	
@@ -32,9 +34,15 @@ public class Main extends JFrame implements ActionListener {
 		//
 		
 		// JLabel for the .txt file
-		txtarea = new JTextArea("Let's get ready to rumble!");
+		txtarea = new JTextArea();
 		txtarea.setLineWrap(true);
 		getContentPane().add(txtarea);
+		
+		// txt file thread .. Is it needed??
+		
+		txtFile = new Server(this);
+		Thread tf = new Thread(txtFile);
+		tf.start();
 		
 		// JTextField for user input
 		txtfield = new JTextField(100);
@@ -77,7 +85,7 @@ public class Main extends JFrame implements ActionListener {
 			System.exit(0);
 		}
 		else if (e.getSource() == start) {
-			start.setText("GO!");
+			start.setText("3,2,1,GO!");
 			
 			// makes a request to start the game to the server
 			// need a countdown, TODO

@@ -5,20 +5,24 @@
 *  clients
 *
 */
+import java.awt.Dimension;
 import java.io.File;
-import java.io.IOException;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Server {
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
-	public Server() {
-
-	}
-
-	public static void main(String args[]) throws IOException {
-
+public class Server extends JPanel implements Runnable {
+	
+	Main parent;
+	JTextArea txt;
+	ArrayList<String> wordsInFile;
+	
+	public void getFile() throws FileNotFoundException {
+		
 		// the file path for the game's textfiles.
 		File dir = new File("C:\\Users\\Carl_\\Desktop\\DTU\\ingeniørarbejde\\3ugers\\Typerace\\Textfiles");
 
@@ -36,26 +40,41 @@ public class Server {
 
 		// using scanner for reading the file, which has been chosen by random
 		Scanner s = new Scanner(file);
-		s.close();
+				
 		// adding each word to the arraylist as long as there still is a line in the
 		// file
-		while (s.hasNextLine())
+		while (s.hasNextLine()) 
 			wordsInFile.add(s.next());
 
 		// basically printing each word from the arraylist
 		// not entirely sure how we are going to use this. (Just a test)
 
 		// printing how many words are in the file.
-		System.out.println(wordsInFile.size());
+		// System.out.println(wordsInFile.size());
 
 		for (int i = 0; i < wordsInFile.size(); i++) {
 
-			System.out.println(wordsInFile.get(i) + " ");
-
-		}
-
-		// testing out if we can print a specific word: SUCCESS
-		// System.out.println(wordsInFile.get(5));
+			this.txt.setText(wordsInFile.get(i) + " ");
+			}
 	}
 
+		// testing out if we can print a specific word: SUCCESS
+		// System.out.println(wordsInFile.get(5));	
+	
+	/*
+	 * Do we need this??
+	public Server(Main parent) {
+		this.parent = parent;
+		this.txt = parent.txtarea;
+	}*/
+
+	
+	 // Trying to make server, don't need thread. Just yet..
+	public void run() {
+		
+		
+			
+		
+	}
+	
 }
