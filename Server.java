@@ -68,7 +68,7 @@ public class Server extends JPanel implements Runnable {
 		String w;
 		while (s.hasNext()) {
 			w = s.next();
-			System.out.println(w);
+			System.out.print(w+" ");
 			wordsInFile.add(w);
 		}
 		System.out.println(wordsInFile.size());
