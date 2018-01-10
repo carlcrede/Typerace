@@ -114,16 +114,16 @@ public class Main extends JFrame implements ActionListener {
 	}
 
 	public static void main(String args[]) {
-		
+		/*
 		PrintWriter pw;
 		try {
-			pw = new PrintWriter("Textfiles\\abcd.txt");
+			pw = new PrintWriter("Textfiles/abcd.txt");
 			pw.println("Test");
 			pw.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 		
 
 		Main doIt = new Main();
