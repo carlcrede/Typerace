@@ -47,6 +47,7 @@ public class Main extends JFrame implements ActionListener {
 		
 		// the area where the .txt file is suppose to be
         txtarea = new JTextArea();
+        txtarea.setFont((txtarea.getFont().deriveFont(16f)));
 		txtarea.setEditable(false);
 		txtarea.setHighlighter(null);
 		txtarea.setLineWrap(true);
