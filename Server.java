@@ -52,7 +52,8 @@ public class Server extends JPanel implements Runnable {
 		// using scanner for reading the file, which has been chosen by random
 		Scanner s = null;
 		try {
-			System.out.println(file.getName());
+			// shows name of file in console
+			//System.out.println(file.getName());
 			s = new Scanner(file, "UTF-8");
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -64,14 +65,18 @@ public class Server extends JPanel implements Runnable {
 
 		// adding each word to the arraylist as long as there still is a line in the
 		// file
-		System.out.println(file.getAbsolutePath());
+		
+		// printing the path for the file in console
+		//System.out.println(file.getAbsolutePath());
 		String w;
 		while (s.hasNext()) {
 			w = s.next();
-			System.out.print(w+" ");
+			// printing words in file to console
+			// System.out.print(w+" ");
 			wordsInFile.add(w);
 		}
-		System.out.println(wordsInFile.size());
+		// printing number of words in the file
+		// System.out.println(wordsInFile.size());
 
 
 		// basically printing each word from the arraylist
