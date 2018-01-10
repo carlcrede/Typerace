@@ -3,10 +3,11 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -113,6 +114,17 @@ public class Main extends JFrame implements ActionListener {
 	}
 
 	public static void main(String args[]) {
+		
+		PrintWriter pw;
+		try {
+			pw = new PrintWriter("Textfiles\\abcd.txt");
+			pw.println("Test");
+			pw.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 
 		Main doIt = new Main();
 		

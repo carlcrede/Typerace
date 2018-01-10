@@ -30,7 +30,7 @@ public class Server extends JPanel implements Runnable {
 	public void getFile() throws FileNotFoundException {
 		
 		// the file path for the game's textfiles.
-		File dir = new File("C:\\Users\\Carl_\\Desktop\\DTU\\ingeniørarbejde\\3ugers\\Typerace\\Textfiles");
+		File dir = new File("Textfiles");
 
 		// putting all files in the folder into an array
 		File[] textFiles = dir.listFiles();
