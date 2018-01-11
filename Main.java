@@ -3,7 +3,6 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import javax.swing.JButton;
@@ -11,6 +10,11 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.text.DefaultHighlighter;
+import javax.swing.text.Highlighter;
+import javax.swing.text.Highlighter.HighlightPainter;
+
+import com.sun.prism.paint.Color;
 
 public class Main extends JFrame implements ActionListener {
 	
@@ -18,7 +22,12 @@ public class Main extends JFrame implements ActionListener {
 	JTextArea txtarea;
 	JTextField inputField;
 	Server txtFile;
+	
+	Highlighter highlighter;
+	HighlightPainter painter;
+	
 	KeyListener input;
+	
 	
 	Client test;
 	
@@ -32,6 +41,10 @@ public class Main extends JFrame implements ActionListener {
 	public Main() {
 		
 		test = new Client(this);
+		
+		//highlighter = txtarea.getHighlighter();
+		
+		// painter = new DefaultHighlighter.DefaultHighlightPainter(Color.GREEN);
 				
 		if (RIGHT_TO_LEFT) {
 			setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
@@ -43,7 +56,7 @@ public class Main extends JFrame implements ActionListener {
 		if (shouldFill) {
 			c.fill = GridBagConstraints.HORIZONTAL;
 		}
-		
+	
 		 //
         /*
          * insert the animation here

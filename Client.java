@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
+
+import com.sun.prism.paint.Color;
 
 /*
  * 
@@ -38,7 +41,8 @@ public class Client extends JPanel implements Runnable, KeyListener {
 	BufferedReader keyboard;
 	InputStreamReader reader;
 	
-	// keylistener
+	// txtarea from main
+	JTextArea txtarea;
 
 	public Client(Main parent) {
 
@@ -46,6 +50,7 @@ public class Client extends JPanel implements Runnable, KeyListener {
 		this.rand = new Random();
 		this.wordsInFile = test.wordsInFile;
 		this.userInput = userInput;
+		this.txtarea = parent.txtarea;
 	}
 	
 	// change the char into a String and store it.
@@ -71,11 +76,15 @@ public class Client extends JPanel implements Runnable, KeyListener {
 		wordCharactersArray = currentWord.split("");
 			
 	}
-		
+	// compares input chars to the text chars.
 	public void compareInputToText() {	
 	
-		
-		
+		for (int i = 0; i < wordCharactersArray.length; i++) {
+			if (wordCharactersArray[i].equals(keyInputString)) {
+				
+			}
+			
+		}
 	}
 
 	public void run() {

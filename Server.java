@@ -19,13 +19,13 @@ import javax.swing.JTextArea;
 public class Server extends JPanel implements Runnable {
 
 	Main parent;
-	JTextArea txt;
+	JTextArea txtarea;
 	ArrayList<String> wordsInFile;
 
 	// Do we need this??
 	public Server(Main parent) {
 		this.parent = parent;
-		this.txt = parent.txtarea;
+		this.txtarea = parent.txtarea;
 	}
 
 	public void getFile() {
@@ -86,7 +86,7 @@ public class Server extends JPanel implements Runnable {
 		// System.out.println(wordsInFile.size());
 
 		for (int i = 0; i < wordsInFile.size(); i++) {
-			this.txt.setText(this.txt.getText() + wordsInFile.get(i) + " ");
+			this.txtarea.setText(this.txtarea.getText() + wordsInFile.get(i) + " ");
 
 			//System.out.println(wordsInFile.get(i) + " ");
 
