@@ -15,8 +15,8 @@ import javax.swing.JTextField;
 public class Main extends JFrame implements ActionListener {
 	
 	JButton start, quit;
-	JTextArea txtarea, inputArea;
-	JTextField txtfield;
+	JTextArea txtarea;
+	JTextField inputField;
 	Server txtFile;
 	
 	public int DEFAULT_HEIGHT = 800;
@@ -60,15 +60,15 @@ public class Main extends JFrame implements ActionListener {
         getContentPane().add(txtarea, c);
         
         // textfield where user writes the text
-        inputArea = new JTextArea();
-        inputArea.setLineWrap(true);
-        inputArea.setHighlighter(null);
+        inputField = new JTextField();
+        inputField.setHighlighter(null);
+        inputField.setFont((inputField.getFont().deriveFont(16f)));
         c.fill = GridBagConstraints.HORIZONTAL;
         c.weightx = 0.7;
         c.weighty = 0.5;
         c.gridx = 0;
         c.gridy = 1;
-        getContentPane().add(inputArea, c);
+        getContentPane().add(inputField, c);
         
         
         // start btn that makes a request to the server or 
