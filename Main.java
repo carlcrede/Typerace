@@ -98,7 +98,9 @@ public class Main extends JFrame implements ActionListener, KeyListener {
         txtFile = new Server(this);
         Thread tf = new Thread(txtFile);
         tf.start();
-	}
+        
+        }
+	
 	
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
@@ -128,7 +130,6 @@ public class Main extends JFrame implements ActionListener, KeyListener {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}*/
-		
 
 		Main doIt = new Main();
 		
