@@ -1,1 +1,10 @@
+<<<<<<< HEAD
 *.class
+=======
+/Client.class
+/Main.class
+/Server.class
+/ClientConnection.class
+/OlversServerlegerum.class
+/Testzone.class
+>>>>>>> 0499cbdaef69f7c532754cef97b60df22fc48896

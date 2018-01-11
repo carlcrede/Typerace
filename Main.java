@@ -3,8 +3,8 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -18,6 +18,9 @@ public class Main extends JFrame implements ActionListener {
 	JTextArea txtarea;
 	JTextField inputField;
 	Server txtFile;
+	KeyListener input;
+	
+	Client test;
 	
 	public int DEFAULT_HEIGHT = 800;
 	public int DEFAULT_WIDTH = 600;
@@ -27,6 +30,8 @@ public class Main extends JFrame implements ActionListener {
     final static boolean RIGHT_TO_LEFT = false;
 	    
 	public Main() {
+		
+		test = new Client(this);
 				
 		if (RIGHT_TO_LEFT) {
 			setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
@@ -61,6 +66,8 @@ public class Main extends JFrame implements ActionListener {
         
         // textfield where user writes the text
         inputField = new JTextField();
+        inputField.addKeyListener(test);
+        inputField.setFocusable(true);
         inputField.setHighlighter(null);
         inputField.setFont((inputField.getFont().deriveFont(16f)));
         c.fill = GridBagConstraints.HORIZONTAL;
@@ -95,7 +102,9 @@ public class Main extends JFrame implements ActionListener {
         txtFile = new Server(this);
         Thread tf = new Thread(txtFile);
         tf.start();
-	}
+        
+        }
+	
 	
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
@@ -125,7 +134,6 @@ public class Main extends JFrame implements ActionListener {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}*/
-		
 
 		Main doIt = new Main();
 		
@@ -139,7 +147,9 @@ public class Main extends JFrame implements ActionListener {
 		doIt.setVisible(true);
 		doIt.setLocationRelativeTo(null);
 		doIt.setResizable(true);
-	}		
+		
+	}
+
 }
   
 		
