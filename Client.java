@@ -1,6 +1,7 @@
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -14,17 +15,33 @@ import javax.swing.JPanel;
  * 
  */
 
-public class Client extends JPanel implements Runnable {
+public class Client extends JPanel implements Runnable, KeyListener {
 
 	Main parent;
 	Random rand;
-	BufferedReader test;
-	ArrayList<String> words = new ArrayList<String>();
+	ArrayList<String> wordsInFile;
+	ArrayList<String> userInput;
+	Server test;
+	
+	BufferedReader keyboard;
+	InputStreamReader reader;
+	String inputText = "";
+	
+	// keylistener
 
 	public Client(Main parent) {
 
 		this.parent = parent;
-		rand = new Random();
+		this.rand = new Random();
+		this.wordsInFile = test.wordsInFile;
+		this.userInput = userInput;
+	}
+	
+	public void compareInputToText () {
+		
+		
+		
+		
 	}
 
 	public void run() {
@@ -32,6 +49,24 @@ public class Client extends JPanel implements Runnable {
 			
 		
 
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
