@@ -12,13 +12,15 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-public class Main extends JFrame implements ActionListener, KeyListener {
+public class Main extends JFrame implements ActionListener {
 	
 	JButton start, quit;
 	JTextArea txtarea;
 	JTextField inputField;
 	Server txtFile;
 	KeyListener input;
+	
+	Client test;
 	
 	public int DEFAULT_HEIGHT = 800;
 	public int DEFAULT_WIDTH = 600;
@@ -28,6 +30,8 @@ public class Main extends JFrame implements ActionListener, KeyListener {
     final static boolean RIGHT_TO_LEFT = false;
 	    
 	public Main() {
+		
+		test = new Client(this);
 				
 		if (RIGHT_TO_LEFT) {
 			setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
@@ -62,7 +66,7 @@ public class Main extends JFrame implements ActionListener, KeyListener {
         
         // textfield where user writes the text
         inputField = new JTextField();
-        inputField.addKeyListener(this);
+        inputField.addKeyListener(test);
         inputField.setFocusable(true);
         inputField.setHighlighter(null);
         inputField.setFont((inputField.getFont().deriveFont(16f)));
@@ -143,25 +147,9 @@ public class Main extends JFrame implements ActionListener, KeyListener {
 		doIt.setVisible(true);
 		doIt.setLocationRelativeTo(null);
 		doIt.setResizable(true);
-	}
-
-	@Override
-	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
-	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
-		System.out.println("KeyPressed=" + KeyEvent.getKeyText(e.getKeyCode()));
-	}		
 }
   
 		
