@@ -54,7 +54,8 @@ public class Client extends JPanel implements Runnable, KeyListener {
 		keyInputString = Character.toString(keyInputChar);
 		
 	}
-	
+	// taking out each individual word from the file, and 
+	// storing it it currentWord.
 	public void getWord() {
 		
 		for (int i = 0; i < this.wordsInFile.size(); i++) {
@@ -63,14 +64,15 @@ public class Client extends JPanel implements Runnable, KeyListener {
 			
 		}
 	}
-			
+	// splitting up a word into each individual character
+	// , and storing it in an array.
 	public void wordToCharacters(String currentWord) {
 		
 		wordCharactersArray = currentWord.split("");
 			
 	}
 		
-	public void compareWord() {	
+	public void compareInputToText() {	
 	
 		
 		
@@ -99,7 +101,6 @@ public class Client extends JPanel implements Runnable, KeyListener {
 	
 	// get the char that is pressed on the keyboard.
 	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
 		keyInputChar = e.getKeyChar();
 	}
 
