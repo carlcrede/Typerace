@@ -30,9 +30,11 @@ public class ClientConnection {
 				while (true) {
 					Socket klientSocket = serverSock.accept();
 					
+					
+					
 				} // Server ends
 			} catch (Exception ex) {
-				ex.printStackTrace();
+				System.out.println("Can't connect to client");
 			}
 	}
 	
