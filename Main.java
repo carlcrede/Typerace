@@ -3,9 +3,8 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -13,12 +12,13 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-public class Main extends JFrame implements ActionListener {
+public class Main extends JFrame implements ActionListener, KeyListener {
 	
 	JButton start, quit;
 	JTextArea txtarea;
 	JTextField inputField;
 	Server txtFile;
+	KeyListener input;
 	
 	public int DEFAULT_HEIGHT = 800;
 	public int DEFAULT_WIDTH = 600;
@@ -62,6 +62,8 @@ public class Main extends JFrame implements ActionListener {
         
         // textfield where user writes the text
         inputField = new JTextField();
+        inputField.addKeyListener(this);
+        inputField.setFocusable(true);
         inputField.setHighlighter(null);
         inputField.setFont((inputField.getFont().deriveFont(16f)));
         c.fill = GridBagConstraints.HORIZONTAL;
@@ -140,6 +142,24 @@ public class Main extends JFrame implements ActionListener {
 		doIt.setVisible(true);
 		doIt.setLocationRelativeTo(null);
 		doIt.setResizable(true);
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		System.out.println("KeyPressed=" + KeyEvent.getKeyText(e.getKeyCode()));
 	}		
 }
   

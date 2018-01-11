@@ -15,7 +15,7 @@ import javax.swing.JPanel;
  * 
  */
 
-public class Client extends JPanel implements Runnable, KeyListener {
+public class Client extends JPanel implements Runnable {
 
 	Main parent;
 	Random rand;
@@ -23,9 +23,10 @@ public class Client extends JPanel implements Runnable, KeyListener {
 	ArrayList<String> userInput;
 	Server test;
 	
+	// used in getWord
+	String currentWord;
 	BufferedReader keyboard;
 	InputStreamReader reader;
-	String inputText = "";
 	
 	// keylistener
 
@@ -37,9 +38,22 @@ public class Client extends JPanel implements Runnable, KeyListener {
 		this.userInput = userInput;
 	}
 	
-	public void compareInputToText () {
+	public void getWord() {
+		
+		for (int i = 0; i < this.wordsInFile.size(); i++) {
+			currentWord = this.wordsInFile.get(i);
+			compareWord();
+		}
+			
+		}
+	
+	public void getInput() {
 		
 		
+	}
+		
+	public void compareWord() {	
+	
 		
 		
 	}
@@ -49,24 +63,6 @@ public class Client extends JPanel implements Runnable, KeyListener {
 			
 		
 
-	}
-
-	@Override
-	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
 	}
 
 }
