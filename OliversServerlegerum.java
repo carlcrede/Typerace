@@ -16,14 +16,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-public class OlversServerlegerum extends JPanel implements Runnable {
+public class OliversServerlegerum extends JPanel implements Runnable {
 
 	Main parent;
 	JTextArea txt;
 	ArrayList<String> wordsInFile;
 
 	// Do we need this??
-	public OlversServerlegerum(Main parent) {
+	public OliversServerlegerum(Main parent) {
 		this.parent = parent;
 		this.txt = parent.txtarea;
 	}
