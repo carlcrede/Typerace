@@ -34,6 +34,7 @@ public class ClientConnection {
 					klientSocket = serverSock.accept();
 					
 					// next methode newGameRequest
+					newGameRequest();
 					
 					
 				} // Server ends
@@ -46,6 +47,9 @@ public class ClientConnection {
 		do {
 			try {
 				Scanner input = new Scanner(klientSocket.getInputStream());
+				String yolo = input.nextLine();
+				System.out.println(yolo);
+				
 			} catch (IOException e) {
 				System.out.println("Can't open scanner");
 			}
