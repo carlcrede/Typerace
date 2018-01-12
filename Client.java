@@ -61,7 +61,6 @@ public class Client extends JPanel implements Runnable, KeyListener {
 	public void getInput() {
 		
 		keyInputString = Character.toString(keyInputChar);
-		
 	}
 	
 	public void getWord() {
@@ -69,18 +68,14 @@ public class Client extends JPanel implements Runnable, KeyListener {
 		for (int i = 0; i < this.wordsInFile.size(); i++) {
 			currentWord = this.wordsInFile.get(i);
 			wordToCharacters(currentWord);
-			compareInputToText();
-			
-			
+			compareInputToText();	
 		}
 	}
 			
 	public void wordToCharacters(String currentWord) {
-		
 		wordCharactersArray = currentWord.split("");
 			
 	}
-		
 		for (int i = 0; i < wordCharactersArray.length; i++) {
 			if (wordCharactersArray[i].equals(keyInputString)) {
 				
@@ -88,40 +83,36 @@ public class Client extends JPanel implements Runnable, KeyListener {
 			}
 			
 		}
-	} */
-
-
+	} */		
+	
 	public void run() {
 
-			
-		
 
 	}
 
-	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
 	
-
-	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
-
-	@Override
-	
 	// get the char that is pressed on the keyboard.
 	public void keyTyped(KeyEvent e) {
+		
 		
 		s1 = parent.txtArea.getText();
 		s2 = parent.inputField.getText();
 		
-		if (this.s1.substring(0,this.s2.length()).equals(s2)) {
+		System.out.println("PTEXT:" + s2);
+		
+		if (s1.substring(0,s2.length()).equals(s2)) {
 			// make user know that what has been typed is right
+			
 			System.out.println("You're doing fine!");
+			System.out.println(s2.length());
 		}
 		else {
 			// make user know that there has been made a mistak
