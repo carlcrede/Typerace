@@ -19,21 +19,14 @@ import javax.swing.JTextArea;
 public class Server extends JPanel implements Runnable {
 
 	Main parent;
-<<<<<<< HEAD
 	JTextArea serverTxtArea;
-=======
-	JTextArea txt;
->>>>>>> b2ec4095ad41c5a5d70c6f1de0130fb32a67c82f
 	ArrayList<String> wordsInFile;
 
 	// Do we need this??
 	public Server(Main parent) {
 		this.parent = parent;
-<<<<<<< HEAD
 		this.serverTxtArea = parent.txtArea;
-=======
-		this.txt = parent.txtarea;
->>>>>>> b2ec4095ad41c5a5d70c6f1de0130fb32a67c82f
+		this.serverTxtArea = parent.txtArea;
 	}
 
 	public void getFile() {
@@ -94,11 +87,8 @@ public class Server extends JPanel implements Runnable {
 		// System.out.println(wordsInFile.size());
 
 		for (int i = 0; i < wordsInFile.size(); i++) {
-<<<<<<< HEAD
+			
 			this.serverTxtArea.setText(this.serverTxtArea.getText() + wordsInFile.get(i) + " ");
-=======
-			this.txt.setText(this.txt.getText() + wordsInFile.get(i) + " ");
->>>>>>> b2ec4095ad41c5a5d70c6f1de0130fb32a67c82f
 
 			//System.out.println(wordsInFile.get(i) + " ");
 

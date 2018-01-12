@@ -3,11 +3,8 @@ import java.awt.event.KeyListener;
 import java.util.Random;
 
 import javax.swing.JPanel;
-<<<<<<< HEAD
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-=======
->>>>>>> b2ec4095ad41c5a5d70c6f1de0130fb32a67c82f
 
 /*
  * 
@@ -23,7 +20,6 @@ public class Client extends JPanel implements Runnable, KeyListener {
 	Random rand;
 	
 	// arraylist for all words in the file
-<<<<<<< HEAD
 	// ArrayList<String> wordsInFile;
 	// arraylist for each character in the word
 	// String[] wordCharactersArray;
@@ -44,32 +40,12 @@ public class Client extends JPanel implements Runnable, KeyListener {
 	// txtarea from main
 	JTextArea clientTxtArea;
 	JTextField txtField;
-=======
-	ArrayList<String> wordsInFile;
-	
-	// arraylist for each character in the word
-	String[] wordCharactersArray;
-	
-	ArrayList<String> userInput;
-	
-	Server test;
-	
-	
-	char keyInputChar;
-	String keyInputString;
-	// used in getWord
-	String currentWord;
-	BufferedReader keyboard;
-	InputStreamReader reader;
-	
-	// keylistener
->>>>>>> b2ec4095ad41c5a5d70c6f1de0130fb32a67c82f
+
 
 	public Client(Main parent) {
 
 		this.parent = parent;
 		this.rand = new Random();
-<<<<<<< HEAD
 	
 		// nullpointerexception if this is used. y?
 		//this.wordsInFile = test.wordsInFile;
@@ -79,10 +55,7 @@ public class Client extends JPanel implements Runnable, KeyListener {
 		this.txtField = parent.inputField;
 		this.s1 = parent.txtArea.getText();
 		this.s2 = parent.inputField.getText();
-=======
-		this.wordsInFile = test.wordsInFile;
-		this.userInput = userInput;
->>>>>>> b2ec4095ad41c5a5d70c6f1de0130fb32a67c82f
+		//this.wordsInFile = test.wordsInFile;
 	}
 	
 	/*  Saving this code for later, found another way to do all this using the provided methods in keylistener.
@@ -98,11 +71,8 @@ public class Client extends JPanel implements Runnable, KeyListener {
 		for (int i = 0; i < this.wordsInFile.size(); i++) {
 			currentWord = this.wordsInFile.get(i);
 			wordToCharacters(currentWord);
-<<<<<<< HEAD
 			compareInputToText();
 			
-=======
->>>>>>> b2ec4095ad41c5a5d70c6f1de0130fb32a67c82f
 			
 		}
 	}
@@ -113,7 +83,6 @@ public class Client extends JPanel implements Runnable, KeyListener {
 			
 	}
 		
-<<<<<<< HEAD
 		for (int i = 0; i < wordCharactersArray.length; i++) {
 			if (wordCharactersArray[i].equals(keyInputString)) {
 				
@@ -123,10 +92,7 @@ public class Client extends JPanel implements Runnable, KeyListener {
 		}
 	} */
 
-	public void run() {
-
 		//compareInputToText();
-=======
 	public void compareWord() {	
 	
 		
@@ -136,19 +102,14 @@ public class Client extends JPanel implements Runnable, KeyListener {
 	public void run() {
 
 			
->>>>>>> b2ec4095ad41c5a5d70c6f1de0130fb32a67c82f
 		
 
 	}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-<<<<<<< HEAD
-			
-=======
 		// TODO Auto-generated method stub
 		
->>>>>>> b2ec4095ad41c5a5d70c6f1de0130fb32a67c82f
 	}
 	
 
@@ -162,19 +123,14 @@ public class Client extends JPanel implements Runnable, KeyListener {
 	
 	// get the char that is pressed on the keyboard.
 	public void keyTyped(KeyEvent e) {
-<<<<<<< HEAD
 		
 		if (s1.substring(0,s2.length()).equals(s2)) {
 			// make user know that what has been typed is right
 			
 		}
 		else {
-			// make user know that there has been made a mistake
+			// make user know that there has been made a mistak
 		}
-=======
-		// TODO Auto-generated method stub
-		keyInputChar = e.getKeyChar();
->>>>>>> b2ec4095ad41c5a5d70c6f1de0130fb32a67c82f
 	}
 
 }

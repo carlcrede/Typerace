@@ -18,13 +18,10 @@ public class Main extends JFrame implements ActionListener {
 	JTextArea txtArea;
 	JTextField inputField;
 	Server txtFile;
-<<<<<<< HEAD
 	
 	//Highlighter highlighter;
 	//HighlightPainter painter;
-=======
 	KeyListener input;
->>>>>>> b2ec4095ad41c5a5d70c6f1de0130fb32a67c82f
 	
 	Client test;
 	
@@ -38,18 +35,17 @@ public class Main extends JFrame implements ActionListener {
 	public Main() {
 		
 		test = new Client(this);
-<<<<<<< HEAD
+
 		
 		//  work = new Client(this);
 		
 		//highlighter = txtarea.getHighlighter();
 		
 		// painter = new DefaultHighlighter.DefaultHighlightPainter(Color.GREEN);
-=======
->>>>>>> b2ec4095ad41c5a5d70c6f1de0130fb32a67c82f
 				
 		if (RIGHT_TO_LEFT) {
 			setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+			
 		}
 		getContentPane().setLayout(new GridBagLayout());
 		
