@@ -10,7 +10,10 @@ public class CheckWord implements Runnable {
 
 	public void run() {
 		
-		
+		int word = 0;
+		while(true) {
+			if ()
+		}
 		
 	}
 
