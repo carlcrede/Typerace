@@ -22,22 +22,21 @@ public class Client extends JPanel implements Runnable, KeyListener {
 
 	Main parent;
 	Random rand;
-	
 	// arraylist for all words in the file
 	ArrayList<String> wordsInFile;
-	
 	// arraylist for each character in the word
 	String[] wordCharactersArray;
-	
-	ArrayList<String> userInput;
-	
+	//ArrayList<String> userInput;
 	Server test;
-	
-	
+	// variable holding the key that is pressed
 	char keyInputChar;
+	// variable holding the key that is pressed converted to a string.
 	String keyInputString;
 	// used in getWord
 	String currentWord;
+	
+	boolean pressingSpacebar;
+	
 	BufferedReader keyboard;
 	InputStreamReader reader;
 	
@@ -48,8 +47,8 @@ public class Client extends JPanel implements Runnable, KeyListener {
 
 		this.parent = parent;
 		this.rand = new Random();
-		this.wordsInFile = test.wordsInFile;
-		this.userInput = userInput;
+		//this.wordsInFile = test.wordsInFile;
+		//this.userInput = userInput;
 		this.txtarea = parent.txtarea;
 	}
 	
@@ -65,7 +64,9 @@ public class Client extends JPanel implements Runnable, KeyListener {
 		
 		for (int i = 0; i < this.wordsInFile.size(); i++) {
 			currentWord = this.wordsInFile.get(i);
-			wordToCharacters(currentWord);
+		//	wordToCharacters(currentWord);
+		//	compareInputToText();
+			
 			
 		}
 	}
@@ -78,10 +79,13 @@ public class Client extends JPanel implements Runnable, KeyListener {
 	}
 	// compares input chars to the text chars.
 	public void compareInputToText() {	
-	
+		
+		getWord();
+		wordToCharacters(currentWord);
+		
 		for (int i = 0; i < wordCharactersArray.length; i++) {
 			if (wordCharactersArray[i].equals(keyInputString)) {
-				
+				System.out.println(wordCharactersArray[i]);
 			}
 			
 		}
@@ -89,20 +93,20 @@ public class Client extends JPanel implements Runnable, KeyListener {
 
 	public void run() {
 
-			
+		compareInputToText();
 		
 
 	}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
+		if (e.getKeyCode() == 32) {
+			pressingSpacebar = true;
+		}
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 

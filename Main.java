@@ -30,6 +30,7 @@ public class Main extends JFrame implements ActionListener {
 	
 	
 	Client test;
+	Client work;
 	
 	public int DEFAULT_HEIGHT = 800;
 	public int DEFAULT_WIDTH = 600;
@@ -41,6 +42,7 @@ public class Main extends JFrame implements ActionListener {
 	public Main() {
 		
 		test = new Client(this);
+      //  work = new Client(this);
 		
 		//highlighter = txtarea.getHighlighter();
 		
@@ -115,6 +117,10 @@ public class Main extends JFrame implements ActionListener {
         txtFile = new Server(this);
         Thread tf = new Thread(txtFile);
         tf.start();
+        
+        // thread
+       // Thread tst = new Thread(work);
+       // tst.start();
         
         }
 	
