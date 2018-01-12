@@ -1,4 +1,5 @@
 import java.net.Socket;
+import java.util.Scanner;
 import java.net.ServerSocket;
 import java.io.*;
 
@@ -6,8 +7,10 @@ import java.io.*;
 //tråd for at kunne sende til flere på samme tid
 //Countdown for spillet
 
-
 public class ClientConnection {
+	
+	BufferedInputStream inputListener = null;
+	static Socket klientSocket;
 	public static ServerSocket serverSock;
 	public static void main (String[] args) {
 		try {
@@ -16,8 +19,8 @@ public class ClientConnection {
 			System.out.println("can't start server");
 		}
 			// Server in and out
-			BufferedOutputStream output = null;
-			BufferedInputStream input = null;
+			//BufferedOutputStream output = null;
+			//BufferedInputStream input = null;
 			
 			openKlientSocket();
 	}
@@ -28,14 +31,26 @@ public class ClientConnection {
 				// Server starts
 				// Loop can't be closed
 				while (true) {
-					Socket klientSocket = serverSock.accept();
+					klientSocket = serverSock.accept();
 					
+					// next methode newGameRequest
 					
 					
 				} // Server ends
 			} catch (Exception ex) {
 				System.out.println("Can't connect to client");
 			}
+	}
+	public static void newGameRequest() {
+		boolean requestListener = false;
+		do {
+			try {
+				Scanner input = new Scanner(klientSocket.getInputStream());
+			} catch (IOException e) {
+				System.out.println("Can't open scanner");
+			}
+			
+		} while (requestListener = false);
 	}
 	
 }
