@@ -92,12 +92,6 @@ public class Client extends JPanel implements Runnable, KeyListener {
 		}
 	} */
 
-		//compareInputToText();
-	public void compareWord() {	
-	
-		
-		
-	}
 
 	public void run() {
 
@@ -126,10 +120,11 @@ public class Client extends JPanel implements Runnable, KeyListener {
 		
 		if (s1.substring(0,s2.length()).equals(s2)) {
 			// make user know that what has been typed is right
-			
+			System.out.println("You're doing fine!");
 		}
 		else {
 			// make user know that there has been made a mistak
+			System.out.println("You made a mistake");
 		}
 	}
 
