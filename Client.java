@@ -1,14 +1,10 @@
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.Random;
 
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
-
-import com.sun.prism.paint.Color;
+import javax.swing.JTextField;
 
 /*
  * 
@@ -23,35 +19,43 @@ public class Client extends JPanel implements Runnable, KeyListener {
 	Main parent;
 	Random rand;
 	// arraylist for all words in the file
-	ArrayList<String> wordsInFile;
+	// ArrayList<String> wordsInFile;
 	// arraylist for each character in the word
-	String[] wordCharactersArray;
+	// String[] wordCharactersArray;
 	//ArrayList<String> userInput;
 	Server test;
 	// variable holding the key that is pressed
-	char keyInputChar;
+	// char keyInputChar;
 	// variable holding the key that is pressed converted to a string.
-	String keyInputString;
+	// String keyInputString;
 	// used in getWord
-	String currentWord;
+	// String currentWord;
 	
-	boolean pressingSpacebar;
+	String s1;
+	String s2;
 	
-	BufferedReader keyboard;
-	InputStreamReader reader;
+	//boolean pressingSpacebar;
 	
 	// txtarea from main
-	JTextArea txtarea;
+	JTextArea clientTxtArea;
+	JTextField txtField;
 
 	public Client(Main parent) {
 
 		this.parent = parent;
 		this.rand = new Random();
+	
+		// nullpointerexception if this is used. y?
 		//this.wordsInFile = test.wordsInFile;
+		
 		//this.userInput = userInput;
-		this.txtarea = parent.txtarea;
+		this.clientTxtArea = parent.txtArea;
+		this.txtField = parent.inputField;
+		this.s1 = parent.txtArea.getText();
+		this.s2 = parent.inputField.getText();
 	}
 	
+	/*  Saving this code for later, found another way to do all this using the provided methods in keylistener.
 	// change the char into a String and store it.
 	public void getInput() {
 		
@@ -64,8 +68,8 @@ public class Client extends JPanel implements Runnable, KeyListener {
 		
 		for (int i = 0; i < this.wordsInFile.size(); i++) {
 			currentWord = this.wordsInFile.get(i);
-		//	wordToCharacters(currentWord);
-		//	compareInputToText();
+			wordToCharacters(currentWord);
+			compareInputToText();
 			
 			
 		}
@@ -80,30 +84,27 @@ public class Client extends JPanel implements Runnable, KeyListener {
 	// compares input chars to the text chars.
 	public void compareInputToText() {	
 		
-		getWord();
-		wordToCharacters(currentWord);
-		
 		for (int i = 0; i < wordCharactersArray.length; i++) {
 			if (wordCharactersArray[i].equals(keyInputString)) {
+				
 				System.out.println(wordCharactersArray[i]);
 			}
 			
 		}
-	}
+	} */
 
 	public void run() {
 
-		compareInputToText();
+		//compareInputToText();
 		
 
 	}
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		if (e.getKeyCode() == 32) {
-			pressingSpacebar = true;
-		}
+			
 	}
+	
 
 	@Override
 	public void keyReleased(KeyEvent e) {
@@ -114,7 +115,14 @@ public class Client extends JPanel implements Runnable, KeyListener {
 	
 	// get the char that is pressed on the keyboard.
 	public void keyTyped(KeyEvent e) {
-		keyInputChar = e.getKeyChar();
+		
+		if (s1.substring(0,s2.length()).equals(s2)) {
+			// make user know that what has been typed is right
+			
+		}
+		else {
+			// make user know that there has been made a mistake
+		}
 	}
 
 }

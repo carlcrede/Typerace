@@ -19,18 +19,14 @@ import com.sun.prism.paint.Color;
 public class Main extends JFrame implements ActionListener {
 	
 	JButton start, quit;
-	JTextArea txtarea;
+	JTextArea txtArea;
 	JTextField inputField;
 	Server txtFile;
 	
-	Highlighter highlighter;
-	HighlightPainter painter;
-	
-	KeyListener input;
-	
+	//Highlighter highlighter;
+	//HighlightPainter painter;
 	
 	Client test;
-	Client work;
 	
 	public int DEFAULT_HEIGHT = 800;
 	public int DEFAULT_WIDTH = 600;
@@ -42,7 +38,8 @@ public class Main extends JFrame implements ActionListener {
 	public Main() {
 		
 		test = new Client(this);
-      //  work = new Client(this);
+		
+		//  work = new Client(this);
 		
 		//highlighter = txtarea.getHighlighter();
 		
@@ -66,18 +63,18 @@ public class Main extends JFrame implements ActionListener {
          */
 		
 		// the area where the .txt file is suppose to be
-        txtarea = new JTextArea();
-        txtarea.setFont((txtarea.getFont().deriveFont(16f)));
-		txtarea.setEditable(false);
-		txtarea.setHighlighter(null);
-		txtarea.setLineWrap(true);
+        txtArea = new JTextArea();
+        txtArea.setFont((txtArea.getFont().deriveFont(16f)));
+		txtArea.setEditable(false);
+		txtArea.setHighlighter(null);
+		txtArea.setLineWrap(true);
         c.fill = GridBagConstraints.HORIZONTAL;
         c.weightx = 0.7;
         c.weighty = 0.5;
         c.ipady = 100;
         c.gridx = 0;
         c.gridy = 0;
-        getContentPane().add(txtarea, c);
+        getContentPane().add(txtArea, c);
         
         // textfield where user writes the text
         inputField = new JTextField();
@@ -117,10 +114,6 @@ public class Main extends JFrame implements ActionListener {
         txtFile = new Server(this);
         Thread tf = new Thread(txtFile);
         tf.start();
-        
-        // thread
-       // Thread tst = new Thread(work);
-       // tst.start();
         
         }
 	
