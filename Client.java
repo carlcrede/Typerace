@@ -53,8 +53,6 @@ public class Client extends JPanel implements Runnable, KeyListener {
 		//this.userInput = userInput;
 		this.clientTxtArea = parent.txtArea;
 		this.txtField = parent.inputField;
-		this.s1 = parent.txtArea.getText();
-		this.s2 = parent.inputField.getText();
 		//this.wordsInFile = test.wordsInFile;
 	}
 	
@@ -118,7 +116,10 @@ public class Client extends JPanel implements Runnable, KeyListener {
 	// get the char that is pressed on the keyboard.
 	public void keyTyped(KeyEvent e) {
 		
-		if (s1.substring(0,s2.length()).equals(s2)) {
+		s1 = parent.txtArea.getText();
+		s2 = parent.inputField.getText();
+		
+		if (this.s1.substring(0,this.s2.length()).equals(s2)) {
 			// make user know that what has been typed is right
 			System.out.println("You're doing fine!");
 		}
