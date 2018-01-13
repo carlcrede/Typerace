@@ -16,16 +16,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-public class OliversServerlegerum extends JPanel implements Runnable {
-
-	Main parent;
-	JTextArea txt;
-	ArrayList<String> wordsInFile;
+public class OliversServerlegerum {
 
 	// Do we need this??
-	public OliversServerlegerum(Main parent) {
-		this.parent = parent;
-		this.txt = parent.txtarea;
+	public void main (String[] args) {
+		getFile();
+		System.out.println("det virker");
 	}
 
 	public void getFile() {
@@ -68,7 +64,7 @@ public class OliversServerlegerum extends JPanel implements Runnable {
 		
 		// printing the path for the file in console
 		//System.out.println(file.getAbsolutePath());
-		String w;
+		String w = null;
 		while (s.hasNext()) {
 			w = s.next();
 			// printing words in file to console
@@ -86,25 +82,14 @@ public class OliversServerlegerum extends JPanel implements Runnable {
 		// System.out.println(wordsInFile.size());
 
 		for (int i = 0; i < wordsInFile.size(); i++) {
-			this.txt.setText(this.txt.getText() + wordsInFile.get(i) + " ");
+			//this.txt.setText(this.txt.getText() + wordsInFile.get(i) + " ");
 
 			//System.out.println(wordsInFile.get(i) + " ");
-
+			System.out.println(w);
 		}
 	}
 
 	// testing out if we can print a specific word: SUCCESS
 	// System.out.println(wordsInFile.get(5));	
-
-
-
-	// Trying to make server, don't need thread. Just yet..
-	public void run() {
-
-
-		getFile();
-
-
-	}
 
 }

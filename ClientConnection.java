@@ -1,16 +1,18 @@
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 import java.net.ServerSocket;
 import java.io.*;
 
 //bytearray eller printwriter
-//tråd for at kunne sende til flere på samme tid
+//tr��d for at kunne sende til flere p�� samme tid
 //Countdown for spillet
 
 
 //PrintWriter til at sende
 //BufferedReader til at modtage
-//Lav to tråde pr. connected klient.
+//Lav to tr��de pr. connected klient.
 
 
 public class ClientConnection {
@@ -20,7 +22,10 @@ public class ClientConnection {
 	public static ServerSocket serverSock;
 	
 	public static void main (String[] args) {
-		try {
+		getFile();
+		
+	}
+/*		try {
 			serverSock = new ServerSocket(9001);
 		} catch (Exception ex) {
 			System.out.println("can't start server");
@@ -29,55 +34,127 @@ public class ClientConnection {
 			//BufferedOutputStream output = null;
 			//BufferedInputStream input = null;
 			
-			openKlientSocket();
-	}
-	
-	public static void openKlientSocket() {
-		
 		try {
-				// Server starts
-				// Loop can't be closed
-				while (true) {
-					klientSocket = serverSock.accept();
-					
-					// next methode newGameRequest
-					newGameRequest();
-					
-					
-				} // Server ends
-			} catch (Exception ex) {
-				System.out.println("Can't connect to client");
-			}
-	}
-	public static void newGameRequest() {
-		boolean requestListener = false;
-		Scanner in = new Scanner(System.in);
-		String ind;
-		PrintWriter pw = null;
-		try {
-			pw = new PrintWriter(klientSocket.getOutputStream());
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}
-		do {
-			try {
-				Scanner input = new Scanner(klientSocket.getInputStream());
-				String yolo = input.nextLine();
-				System.out.println(yolo);
-				
-				if (yolo.equals("start")) {
-					System.out.println("Your turn to type:");
-					ind = in.nextLine();
-					pw.print(ind+"\r\n");
-					pw.flush();
-					
+			// Server starts
+			// Loop can't be closed
+			
+			//holder do while loopet koerrende
+			boolean requestListener = false;
+			
+			// String der sendes fra server til client
+			String msgForClient;
+			
+			// Output i form af msgForClient
+			PrintWriter output = null;
+			
+			// Connection to client loop
+			while (true) {
+				klientSocket = serverSock.accept();
+				try {
+					output = new PrintWriter(klientSocket.getOutputStream());
+				} catch (IOException e1) {
+					e1.printStackTrace();
 				}
 				
-			} catch (IOException e) {
-				System.out.println("Can't open scanner");
-			}
-			
-		} while (requestListener = false);
-	}
+				
+				do {
+					try {
+						// modtager input fra klient
+						Scanner clientInput = new Scanner(klientSocket.getInputStream());
+						// laver input til string
+						String clientInputString = clientInput.nextLine();
+						
+// mangler traade		// goer noget, hvis string er lig med "start" Boer laves som "hvis client1.equals(client2) -> start countdown"
+						if (clientInputString.equals("Start")) {
+							
+							getFile();
+							
+							msgForClient = "Start countdown";
+							output.print(msgForClient+"\r\n");
+							output.flush();
+							
+						}
+						
+					} catch (IOException e) {
+						System.out.println("Can't open scanner");
+					}
+					
+				} while (requestListener = false);
+				
+				
+			} // Server ends
+		} catch (Exception ex) {
+			System.out.println("Can't connect to client");
+		}	
+	}*/
 	
+	public static void getFile() {
+
+		// the file path for the game's textfiles.
+		File dir = new File("Textfiles");
+
+		// putting all files in the folder into an array
+		File[] textFiles = dir.listFiles();
+
+
+		// instance of random needed to get random .txt file
+		Random random = new Random();
+
+		// instance of File needed for choosing a random file in the folder
+		File file;
+		do {
+			file = textFiles[random.nextInt(textFiles.length)];
+		} while (file.getName().equals(".DS_Store"));
+
+		// creating arraylist to put all words from file into
+		ArrayList<String> wordsInFile = new ArrayList<String>();
+
+		// using scanner for reading the file, which has been chosen by random
+		Scanner s = null;
+		try {
+			// shows name of file in console
+			//System.out.println(file.getName());
+			s = new Scanner(file, "UTF-8");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		if (s == null)
+			return;
+
+		// System.out.println(s.toString());
+
+		// adding each word to the arraylist as long as there still is a line in the
+		// file
+		
+		// printing the path for the file in console
+		//System.out.println(file.getAbsolutePath());
+		String w = null;
+		while (s.hasNext()) {
+			w = s.next();
+			// printing words in file to console
+			//System.out.print(w+" ");
+			wordsInFile.add(w);
+		}
+				
+		// printing number of words in the file
+		// System.out.println(wordsInFile.size());
+
+
+		// basically printing each word from the arraylist
+		// not entirely sure how we are going to use this. (Just a test)
+		
+		// String to be send
+		String chosenText = "";
+		
+		// wordsInFile getting put toghter in the String chosenText
+		for (int i = 0; i < wordsInFile.size(); i++) {
+			//this.txt.setText(this.txt.getText() + wordsInFile.get(i) + " ");
+
+			//System.out.print(wordsInFile.get(i) + " ");
+			chosenText = chosenText+wordsInFile.get(i) + " ";
+		}
+	}
+
+	// testing out if we can print a specific word: SUCCESS
+	// System.out.println(wordsInFile.get(5));
 }
