@@ -16,15 +16,22 @@ public class ClientDummy2 {
 			Socket sock = new Socket(adress,port);
 			BufferedReader bir = new BufferedReader(new InputStreamReader(sock.getInputStream()));
 			PrintWriter pw = new PrintWriter(sock.getOutputStream());
-			String input;
+			String input = "";
+			String test = "";
 			do  {
+				
+				test = bir.readLine();
+				System.out.println(test);
+				test = bir.readLine();
+				System.out.println(test);
+				/*
 				input = in.nextLine();
 				pw.print(input+"\r\n");
 				pw.flush();
+				*/
 				
 				
-				
-			} while (!(input.equals("close")));
+			} while (!(test.equals("close")));
 	
 		} catch (IOException e) {
 			e.printStackTrace();

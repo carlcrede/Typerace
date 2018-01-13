@@ -20,6 +20,20 @@ public class ClientConnection extends Thread {
 	}
 	
 	public void run() {
+		
+		PrintWriter test = null;
+		try {	
+			test = new PrintWriter(socket.getOutputStream());
+			test.println("test 123 virker det?");
+			test.flush();
+			test.println("close");
+			test.flush();
+		} catch (IOException e) {
+			System.out.println("kunne ikke sende test");
+		}
+		
+		
+		/*
 		// String der sendes fra server til client
 		String msgForClient;
 		
@@ -69,5 +83,5 @@ public class ClientConnection extends Thread {
 				}
 			}
 		}
-	}
+	*/}
 }
