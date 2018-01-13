@@ -31,7 +31,7 @@ public class ClientConnection extends Thread {
 			try {
 				output = new PrintWriter(socket.getOutputStream());
 			} catch (IOException e) {
-				e.printStackTrace();
+				System.out.println("can't open PrintWriter");
 			}
 			
 			

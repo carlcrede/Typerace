@@ -8,7 +8,8 @@ import java.io.*;
 public class Threadhandler {
 	
 	public static void main (String[] args) {
-
+		ArrayList<Integer> player = new ArrayList<Integer>();
+		int i = 1;
 		Socket socket = null;
 		ServerSocket serverSock = null;
 		
@@ -21,13 +22,17 @@ public class Threadhandler {
 		}
 		while (true) {
 			try {
+				if ((player.size() <2)) {
+					i++;
+					
 			socket = serverSock.accept();
+				}
 			} catch (IOException e1) {
-				System.out.println();
+				System.out.println("can't connect to client");
 		
 			}
 		
-		new ServerTest(socket).start();
+		new ClientConnection(socket).start();
 		}
 	}
 }

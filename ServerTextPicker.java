@@ -10,9 +10,15 @@ import java.io.*;
 //Countdown for spillet
 
 public class ServerTextPicker {
-
+	
 	// String med getFile()-teksten
 	static String chosenText = "";
+	
+	public static void main (String[] args) {
+		getFile();
+		
+	}
+
 	
 	// vælger en fil og skriver den som en string
 	public static void getFile() {
