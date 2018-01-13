@@ -26,7 +26,6 @@ public class Server extends JPanel implements Runnable {
 	public Server(Main parent) {
 		this.parent = parent;
 		this.serverTxtArea = parent.txtArea;
-		this.serverTxtArea = parent.txtArea;
 	}
 
 	public void getFile() {
