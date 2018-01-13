@@ -8,7 +8,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-public class OliversServerlegerum {
+public class ServerTest {
 	
 	public void main (String[] args) {
 		ClientConnection C1 = new ClientConnection("Thread-1");
@@ -16,9 +16,6 @@ public class OliversServerlegerum {
 		
 		ClientConnection C2 = new ClientConnection("Thread-2");
 		C2.start();
-		
-		
-		
 	}
 	
 }
