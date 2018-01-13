@@ -9,16 +9,10 @@ import java.io.*;
 //tr��d for at kunne sende til flere p�� samme tid
 //Countdown for spillet
 
-
-//PrintWriter til at sende
-//BufferedReader til at modtage
-//Lav to tr��de pr. connected klient.
-
-
 public class ClientConnection implements Runnable {
 	private Thread t;
 	private String threadName;
-	
+	public static String x;
 	ClientConnection(String name) {
 		threadName = name;
 		
@@ -30,7 +24,7 @@ public class ClientConnection implements Runnable {
 			t.start();
 		}
 	}
-	
+	// String med getFile()-teksten
 	static String chosenText = "";
 	
 	// vælger en fil og skriver den som en string
@@ -100,84 +94,10 @@ public class ClientConnection implements Runnable {
 		}
 	}
 
-	static Socket klientSocket;
-	
-	public static ServerSocket serverSock;
 	
 	public void run() {
-		try {
-			serverSock = new ServerSocket(9001);
-		} catch (Exception ex) {
-			System.out.println("can't start server");
-		}
-			
-		try {
-			// Server starts
-			// Loop can't be closed
-			
-			//holder do while loopet koerrende
-			boolean requestListener = false;
-			
-			// String der sendes fra server til client
-			String msgForClient;
-			
-			// Output i form af msgForClient
-			PrintWriter output = null;
-			
-			// Connection to client loop
-			while (true) {
-				klientSocket = serverSock.accept();
-				try {
-					output = new PrintWriter(klientSocket.getOutputStream());
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
-				
-				
-				do {
-					try {
-						// modtager input fra klient
-						Scanner clientInput = new Scanner(klientSocket.getInputStream());
-						// laver input til string
-						String clientInputString = clientInput.nextLine();
-				
-						// lukker scanneren
-						clientInput.close();
-						
-// mangler traade		// goer noget, hvis string er lig med "start" Boer laves som "hvis client1.equals(client2) -> start countdown"
-						
-						if (clientInputString.equals("Start")) {
-							
-							getFile();
-							
-							output.println(chosenText);
-							output.flush();
-							
-							// Venter på accept fra begge clienter
-							while (!(clientInputString.equals("Accept"))) {
-								clientInputString = clientInput.nextLine();
-							}
-							
-							msgForClient = "Start countdown";
-							output.print(msgForClient+"\r\n");
-							output.flush();
-							
-						}
-						
-					} catch (IOException e) {
-						System.out.println("Can't open scanner");
-					}
-					
-				} while (requestListener = false);
-				
-				
-			} // Server ends
-		} catch (Exception ex) {
-			System.out.println("Can't connect to client");
-		}	
-		
+		getFile();
 	}
-
-	// testing out if we can print a specific word: SUCCESS
-	// System.out.println(wordsInFile.get(5));
+	
+	
 }
