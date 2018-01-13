@@ -46,8 +46,7 @@ public class Server extends JPanel implements Runnable {
 			file = textFiles[random.nextInt(textFiles.length)];
 		} while (file.getName().equals(".DS_Store"));
 
-		// creating arraylist to put all words from file into
-		ArrayList<String> wordsInFile = new ArrayList<String>();
+		
 
 		// using scanner for reading the file, which has been chosen by random
 		Scanner s = null;
@@ -65,7 +64,8 @@ public class Server extends JPanel implements Runnable {
 
 		// adding each word to the arraylist as long as there still is a line in the
 		// file
-		
+		// creating arraylist to put all words from file into
+		ArrayList<String> wordsInFile = new ArrayList<String>();
 		// printing the path for the file in console
 		//System.out.println(file.getAbsolutePath());
 		String w;
@@ -101,7 +101,6 @@ public class Server extends JPanel implements Runnable {
 
 	// Trying to make server, don't need thread. Just yet..
 	public void run() {
-
 
 		getFile();
 

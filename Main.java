@@ -1,7 +1,5 @@
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.ComponentOrientation;
-import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -10,14 +8,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
-import javax.swing.Box;
-import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -28,7 +23,6 @@ public class Main extends JFrame implements ActionListener, FocusListener {
 	JTextField inputField;
 	Server txtFile;
 	JLabel logo, progress;
-	
 	Client test;
 	
 	public int DEFAULT_HEIGHT = 800;
@@ -39,12 +33,6 @@ public class Main extends JFrame implements ActionListener, FocusListener {
     final static boolean RIGHT_TO_LEFT = false;
 	    
 	public Main() {
-		
-		//  work = new Client(this);
-		
-		//highlighter = txtarea.getHighlighter();
-		
-		// painter = new DefaultHighlighter.DefaultHighlightPainter(Color.GREEN);
 				
 		if (RIGHT_TO_LEFT) {
 			setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
@@ -53,9 +41,9 @@ public class Main extends JFrame implements ActionListener, FocusListener {
 		getContentPane().setLayout(new GridBagLayout());
 		getContentPane().setBackground(Color.WHITE);
 		
-		test = new Client(this);
-		
 		ImageIcon image = new ImageIcon("Images\\logo.png");
+		
+		test = new Client(this);
 		
 		GridBagConstraints c = new GridBagConstraints();
 		
@@ -156,6 +144,7 @@ public class Main extends JFrame implements ActionListener, FocusListener {
         Thread tf = new Thread(txtFile);
         tf.start();
         
+        
         } // constructor
 	
 	
@@ -177,12 +166,10 @@ public class Main extends JFrame implements ActionListener, FocusListener {
 	} // actionPerformed
 	
 	public void focusGained(FocusEvent e) {
-		// TODO Auto-generated method stub
 		inputField.setText("");
 	}
 
 	public void focusLost(FocusEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 	

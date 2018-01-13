@@ -1,8 +1,8 @@
-	import java.net.Socket;
-	import java.net.UnknownHostException;
-	import java.net.ServerSocket;
-	import java.io.*;
-	import java.util.Scanner;
+import java.net.Socket;
+import java.net.UnknownHostException;
+import java.net.ServerSocket;
+import java.io.*;
+import java.util.Scanner;
 	
 public class ClientDummy1 {
 
