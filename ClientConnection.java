@@ -7,11 +7,18 @@ import java.io.*;
 //tråd for at kunne sende til flere på samme tid
 //Countdown for spillet
 
+
+//PrintWriter til at sende
+//BufferedReader til at modtage
+//Lav to tråde pr. connected klient.
+
+
 public class ClientConnection {
 	
 	BufferedInputStream inputListener = null;
 	static Socket klientSocket;
 	public static ServerSocket serverSock;
+	
 	public static void main (String[] args) {
 		try {
 			serverSock = new ServerSocket(9001);
@@ -44,11 +51,27 @@ public class ClientConnection {
 	}
 	public static void newGameRequest() {
 		boolean requestListener = false;
+		Scanner in = new Scanner(System.in);
+		String ind;
+		PrintWriter pw = null;
+		try {
+			pw = new PrintWriter(klientSocket.getOutputStream());
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
 		do {
 			try {
 				Scanner input = new Scanner(klientSocket.getInputStream());
 				String yolo = input.nextLine();
 				System.out.println(yolo);
+				
+				if (yolo.equals("start")) {
+					System.out.println("Your turn to type:");
+					ind = in.nextLine();
+					pw.print(ind+"\r\n");
+					pw.flush();
+					
+				}
 				
 			} catch (IOException e) {
 				System.out.println("Can't open scanner");
