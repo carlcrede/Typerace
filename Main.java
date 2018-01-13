@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.Timer;
 
 public class Main extends JFrame implements ActionListener, FocusListener {
 	
@@ -155,8 +156,14 @@ public class Main extends JFrame implements ActionListener, FocusListener {
 			JOptionPane.showMessageDialog(null, "Thanks for using DTUeven Type?", "Goodbye", JOptionPane.INFORMATION_MESSAGE);
 			System.exit(0);
 		}
-		else if (e.getSource() == start) {
-			start.setText("3,2,1,GO!");
+		else if (e.getSource() == start) {	
+			Server tst = new Server(this);
+			Thread test = new Thread(tst);
+			txtArea.setText("");
+			inputField.setText("");
+			inputField.requestFocus();
+			test.start();
+			
 			
 			// makes a request to start the game to the server
 			// need a countdown, TODO
@@ -166,11 +173,15 @@ public class Main extends JFrame implements ActionListener, FocusListener {
 	} // actionPerformed
 	
 	public void focusGained(FocusEvent e) {
-		inputField.setText("");
+		
+		String test = "Click here to start typing!";
+		if (inputField.getText().equals(test)) {
+			inputField.setText("");
+		}
 	}
 
 	public void focusLost(FocusEvent e) {
-		
+	
 	}
 	
 	public static void main(String args[]) {

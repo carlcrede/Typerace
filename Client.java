@@ -102,20 +102,22 @@ public class Client extends JPanel implements Runnable, CaretListener {
 		
 		//System.out.println("PTEXT:" + s2);
 		
-		if (s1.substring(0,s2.length()).equals(s2)) {
-			// make user know that what has been typed is right
-			
-			parent.progress.setText("<html><b color=#228B22>ALL GOOD, KEEP GOING!</b></html>");
-			
-			//System.out.println("You're doing fine!");
-			//System.out.println(s2.length());
-		}
+		if (s2.length() != s1.length()) {
 		
-		else {
-			// make user know that there has been made a mistak
-			parent.progress.setText("<html><b color=#FF0000>YOU MADE A MISTAKE! YOU NEED TO CORRECT IT!</b></html>");
-			//System.out.println("You made a mistake");
+			if (s1.substring(0,s2.length()).equals(s2)) {
+				// make user know that what has been typed is right
+			
+				parent.progress.setText("<html><b color=#228B22>ALL GOOD, KEEP GOING!</b></html>");
+			
+				//System.out.println("You're doing fine!");
+				//System.out.println(s2.length());
+			}
+		
+			else {
+				// make user know that there has been made a mistak
+				parent.progress.setText("<html><b color=#FF0000>YOU MADE A MISTAKE! YOU NEED TO CORRECT IT!</b></html>");
+				//System.out.println("You made a mistake");
+			}
 		}
-	}
-
-}
+	} // caretUpdate
+} // class
