@@ -1,10 +1,11 @@
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.util.Random;
 
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.event.CaretEvent;
+import javax.swing.event.CaretListener;
 
 /*
  * 
@@ -14,7 +15,7 @@ import javax.swing.JTextField;
  * 
  */
 
-public class Client extends JPanel implements Runnable, KeyListener {
+public class Client extends JPanel implements Runnable, CaretListener {
 
 	Main parent;
 	Random rand;
@@ -90,29 +91,23 @@ public class Client extends JPanel implements Runnable, KeyListener {
 
 	}
 
-	public void keyPressed(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	public void keyReleased(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
 	// get the char that is pressed on the keyboard.
-	public void keyTyped(KeyEvent e) {
+	public void caretUpdate(CaretEvent e) {
+		
+		
 		
 		s1 = parent.txtArea.getText();
 		s2 = parent.inputField.getText();
 		
 		System.out.println("PTEXT:" + s2);
 		
-		if (s1.substring(1,s2.length()).equals(s2)) {
+		if (s1.substring(0,s2.length()).equals(s2)) {
 			// make user know that what has been typed is right
 			
 			System.out.println("You're doing fine!");
 			System.out.println(s2.length());
 		}
+		
 		else {
 			// make user know that there has been made a mistak
 			System.out.println("You made a mistake");

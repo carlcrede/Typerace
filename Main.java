@@ -1,15 +1,19 @@
 import java.awt.ComponentOrientation;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-public class Main extends JFrame implements ActionListener {
+public class Main extends JFrame implements ActionListener, FocusListener {
 	
 	JButton start, quit;
 	JTextArea txtArea;
@@ -41,6 +45,8 @@ public class Main extends JFrame implements ActionListener {
 		}
 		getContentPane().setLayout(new GridBagLayout());
 		
+		Insets insets = new Insets(0,0,0,0);
+		
 		GridBagConstraints c = new GridBagConstraints();
 		
 		if (shouldFill) {
@@ -56,26 +62,32 @@ public class Main extends JFrame implements ActionListener {
 		// the area where the .txt file is suppose to be
         txtArea = new JTextArea();
         txtArea.setFont((txtArea.getFont().deriveFont(16f)));
+        txtArea.setWrapStyleWord(true);
 		txtArea.setEditable(false);
 		txtArea.setHighlighter(null);
 		txtArea.setLineWrap(true);
         c.fill = GridBagConstraints.HORIZONTAL;
+        c.insets = new Insets(0,20,0,20);
         c.weightx = 0.7;
-        c.weighty = 0.5;
-        c.ipady = 100;
+        c.weighty = 0.8;
+      //  c.ipady = 100;
         c.gridx = 0;
         c.gridy = 0;
         getContentPane().add(txtArea, c);
         
         // textfield where user writes the text
         inputField = new JTextField();
-        inputField.addKeyListener(test);
+        inputField.addCaretListener(test);
+        c.insets = new Insets(0,20,0,20);
         inputField.setFocusable(true);
+        inputField.addFocusListener(this);
+        inputField.setBackground(getBackground());
         inputField.setHighlighter(null);
         inputField.setFont((inputField.getFont().deriveFont(16f)));
+        inputField.setText("Click here to start typing!");
         c.fill = GridBagConstraints.HORIZONTAL;
-        c.weightx = 0.7;
-        c.weighty = 0.5;
+      //  c.weightx = 0.7;
+        //c.weighty = 0.5;
         c.gridx = 0;
         c.gridy = 1;
         getContentPane().add(inputField, c);
@@ -87,7 +99,8 @@ public class Main extends JFrame implements ActionListener {
         start = new JButton("New Game");
         start.addActionListener(this);
         c.fill = GridBagConstraints.HORIZONTAL;
-        c.weightx = 0.3;
+     //   c.ipady = 0;
+       // c.weightx = 0.3;
         c.gridx = 1;
         c.gridy = 0;
         getContentPane().add(start, c);
@@ -95,7 +108,7 @@ public class Main extends JFrame implements ActionListener {
         // quit btn that quits the game.
         quit = new JButton("Quit");
         quit.addActionListener(this);
-        c.weightx = 0.3;
+       // c.weightx = 0.3;
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 1;
         c.gridy = 1;
@@ -125,7 +138,17 @@ public class Main extends JFrame implements ActionListener {
 		}
 			
 	}
+	
+	public void focusGained(FocusEvent e) {
+		// TODO Auto-generated method stub
+		inputField.setText("");
+	}
 
+	public void focusLost(FocusEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	public static void main(String args[]) {
 
 		Main doIt = new Main();
@@ -139,9 +162,12 @@ public class Main extends JFrame implements ActionListener {
 		doIt.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		doIt.setVisible(true);
 		doIt.setLocationRelativeTo(null);
-		doIt.setResizable(true);
+		doIt.setResizable(false);
 		
 	}
+
+
+	
 
 }
   
