@@ -94,8 +94,6 @@ public class Client extends JPanel implements Runnable, CaretListener {
 	// get the char that is pressed on the keyboard.
 	public void caretUpdate(CaretEvent e) {
 		
-		
-		
 		s1 = parent.txtArea.getText();
 		s2 = parent.inputField.getText();
 		

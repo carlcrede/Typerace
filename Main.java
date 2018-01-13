@@ -1,4 +1,6 @@
+import java.awt.BorderLayout;
 import java.awt.ComponentOrientation;
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -7,9 +9,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -47,6 +53,8 @@ public class Main extends JFrame implements ActionListener, FocusListener {
 		
 		Insets insets = new Insets(0,0,0,0);
 		
+		ImageIcon image = new ImageIcon("Images\\logo.png");
+		
 		GridBagConstraints c = new GridBagConstraints();
 		
 		if (shouldFill) {
@@ -58,6 +66,10 @@ public class Main extends JFrame implements ActionListener, FocusListener {
          * insert the animation here
          * 
          */
+		
+		
+		// image on the top
+		
 		
 		// the area where the .txt file is suppose to be
         txtArea = new JTextArea();
@@ -96,6 +108,7 @@ public class Main extends JFrame implements ActionListener, FocusListener {
         // start btn that makes a request to the server or 
         // something like that. Then a timer, and a game i started
         // when the other player(s) is/are ready.
+        
         start = new JButton("New Game");
         start.addActionListener(this);
         c.fill = GridBagConstraints.HORIZONTAL;
