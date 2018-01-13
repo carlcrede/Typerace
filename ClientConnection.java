@@ -22,10 +22,7 @@ public class ClientConnection {
 	public static ServerSocket serverSock;
 	
 	public static void main (String[] args) {
-		getFile();
-		
-	}
-/*		try {
+		try {
 			serverSock = new ServerSocket(9001);
 		} catch (Exception ex) {
 			System.out.println("can't start server");
@@ -86,7 +83,7 @@ public class ClientConnection {
 		} catch (Exception ex) {
 			System.out.println("Can't connect to client");
 		}	
-	}*/
+	}
 	
 	public static void getFile() {
 
