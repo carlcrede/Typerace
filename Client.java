@@ -1,6 +1,7 @@
 import java.awt.event.KeyEvent;
 import java.util.Random;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -41,12 +42,14 @@ public class Client extends JPanel implements Runnable, CaretListener {
 	// txtarea from main
 	JTextArea clientTxtArea;
 	JTextField txtField;
+	JLabel clientLabel;
 
 
 	public Client(Main parent) {
 
 		this.parent = parent;
 		this.rand = new Random();
+		this.clientLabel = parent.progress;
 	
 		// nullpointerexception if this is used. y?
 		//this.wordsInFile = test.wordsInFile;
@@ -97,18 +100,21 @@ public class Client extends JPanel implements Runnable, CaretListener {
 		s1 = parent.txtArea.getText();
 		s2 = parent.inputField.getText();
 		
-		System.out.println("PTEXT:" + s2);
+		//System.out.println("PTEXT:" + s2);
 		
 		if (s1.substring(0,s2.length()).equals(s2)) {
 			// make user know that what has been typed is right
 			
-			System.out.println("You're doing fine!");
-			System.out.println(s2.length());
+			parent.progress.setText("<html><b color=#228B22>ALL GOOD, KEEP GOING!</b></html>");
+			
+			//System.out.println("You're doing fine!");
+			//System.out.println(s2.length());
 		}
 		
 		else {
 			// make user know that there has been made a mistak
-			System.out.println("You made a mistake");
+			parent.progress.setText("<html><b color=#FF0000>YOU MADE A MISTAKE! YOU NEED TO CORRECT IT!</b></html>");
+			//System.out.println("You made a mistake");
 		}
 	}
 
