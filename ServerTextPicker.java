@@ -11,11 +11,11 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class ServerTest extends Thread {
+public class ServerTextPicker extends Thread {
 	Socket socket;
 	String threadName;
 	
-	public ServerTest (Socket clientSocket) {
+	public ServerTextPicker (Socket clientSocket) {
 		this.socket = clientSocket;
 	}
 	
