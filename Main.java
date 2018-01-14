@@ -7,7 +7,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -15,7 +14,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.Timer;
 
 public class Main extends JFrame implements ActionListener, FocusListener {
 	
@@ -25,9 +23,6 @@ public class Main extends JFrame implements ActionListener, FocusListener {
 	Server txtFile;
 	JLabel logo, progress;
 	Client test;
-	
-	public int DEFAULT_HEIGHT = 800;
-	public int DEFAULT_WIDTH = 600;
 	
 	final static boolean shouldFill = true;
     final static boolean shouldWeightX = true;
@@ -58,7 +53,6 @@ public class Main extends JFrame implements ActionListener, FocusListener {
          * 
          */
 		
-		
 		// image on the top
 		logo = new JLabel(image);
 		c.fill = GridBagConstraints.HORIZONTAL;
@@ -80,7 +74,6 @@ public class Main extends JFrame implements ActionListener, FocusListener {
         c.insets = new Insets(0,20,0,20);
         c.weightx = 0.7;
         c.weighty = 0.3;
-      //  c.ipady = 100;
         c.gridx = 0;
         c.gridy = 1;
         getContentPane().add(txtArea, c);
@@ -101,6 +94,7 @@ public class Main extends JFrame implements ActionListener, FocusListener {
         
     
         // textfield where user writes the text
+        // not focusable. The client class uses this area to 
         inputField = new JTextField();
         inputField.addCaretListener(test);
         c.insets = new Insets(0,20,20,20);
@@ -111,7 +105,6 @@ public class Main extends JFrame implements ActionListener, FocusListener {
         inputField.setFont((inputField.getFont().deriveFont(16f)));
         inputField.setText("Click here to start typing!");
         c.fill = GridBagConstraints.HORIZONTAL;
-      //  c.weightx = 0.7;
         c.weighty = 0.3;
         c.gridx = 0;
         c.gridy = 3;
@@ -119,14 +112,12 @@ public class Main extends JFrame implements ActionListener, FocusListener {
         
         
         // start btn that makes a request to the server or 
-        // something like that. Then a timer, and a game i started
+        // something like that. Then a timer, and a game is started
         // when the other player(s) is/are ready.
         
         start = new JButton("New Game");
         start.addActionListener(this);
         c.fill = GridBagConstraints.HORIZONTAL;
-     //   c.ipady = 0;
-       // c.weightx = 0.3;
         c.gridx = 1;
         c.gridy = 1;
         getContentPane().add(start, c);
@@ -134,13 +125,13 @@ public class Main extends JFrame implements ActionListener, FocusListener {
         // quit btn that quits the game.
         quit = new JButton("Quit");
         quit.addActionListener(this);
-       // c.weightx = 0.3;
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 1;
         c.gridy = 3;
         getContentPane().add(quit, c);
         
-        // thread
+        // thread - putting random file into textarea. Picking and sending the file is to be handled by server,
+        // putting it into textarea can still be handled by client. needs to be corrected.
         txtFile = new Server(this);
         Thread tf = new Thread(txtFile);
         tf.start();
@@ -152,10 +143,13 @@ public class Main extends JFrame implements ActionListener, FocusListener {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		
+		// game quits if quit btn is pressed.
 		if (e.getSource() == quit) {
 			JOptionPane.showMessageDialog(null, "Thanks for using DTUeven Type?", "Goodbye", JOptionPane.INFORMATION_MESSAGE);
 			System.exit(0);
 		}
+		// if start button is pressed, right now it clears the inputfield, and creates a new thread from the server class,
+		// which puts a new txtfile in the textarea. Off course this is suppose to send info to the server, when we get that running.
 		else if (e.getSource() == start) {	
 			Server tst = new Server(this);
 			Thread test = new Thread(tst);
@@ -163,7 +157,6 @@ public class Main extends JFrame implements ActionListener, FocusListener {
 			inputField.setText("");
 			inputField.requestFocus();
 			test.start();
-			
 			
 			// makes a request to start the game to the server
 			// need a countdown, TODO
@@ -174,12 +167,14 @@ public class Main extends JFrame implements ActionListener, FocusListener {
 	
 	public void focusGained(FocusEvent e) {
 		
+		// first time the inputField is in focus, the text in it is cleared.
 		String test = "Click here to start typing!";
 		if (inputField.getText().equals(test)) {
 			inputField.setText("");
 		}
 	}
 
+	// not used right now.
 	public void focusLost(FocusEvent e) {
 	
 	}
@@ -192,7 +187,7 @@ public class Main extends JFrame implements ActionListener, FocusListener {
 		"Welcome to the DTUeven Type?\n" + "Our take on the classic online typing game.\n" + "Have fun!",
 		"Welcome to DTUeven Type?", JOptionPane.INFORMATION_MESSAGE);
 		
-		doIt.setTitle("TypeRacer 1.0"); // Set title on window
+		doIt.setTitle("DTUeven Type? 1.0"); // Set title on window
 		doIt.setSize(800, 600); // Set size
 		doIt.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		doIt.setVisible(true);

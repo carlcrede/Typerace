@@ -1,7 +1,6 @@
-import java.awt.event.KeyEvent;
 import java.util.Random;
-
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -10,9 +9,6 @@ import javax.swing.event.CaretListener;
 
 /*
  * 
- * ** INSERT INFORMATIONAL TEXT THAT 
- * ** THAT GENERALLY DESCRIBES THE 
- * ** PURPOSE OF THIS CLASS
  * 
  */
 
@@ -20,28 +16,9 @@ public class Client extends JPanel implements Runnable, CaretListener {
 
 	Main parent;
 	Random rand;
-	
-	// arraylist for all words in the file
-	// ArrayList<String> wordsInFile;
-	// arraylist for each character in the word
-	// String[] wordCharactersArray;
-	//ArrayList<String> userInput;
 	Server test;
-	// variable holding the key that is pressed
-	// char keyInputChar;
-	// variable holding the key that is pressed converted to a string.
-	// String keyInputString;
-	// used in getWord
-	// String currentWord;
-	
 	String s1;
 	String s2;
-	
-	//boolean pressingSpacebar;
-	
-	// txtarea from main
-	JTextArea clientTxtArea;
-	JTextField txtField;
 	JLabel clientLabel;
 
 
@@ -50,14 +27,7 @@ public class Client extends JPanel implements Runnable, CaretListener {
 		this.parent = parent;
 		this.rand = new Random();
 		this.clientLabel = parent.progress;
-	
-		// nullpointerexception if this is used. y?
-		//this.wordsInFile = test.wordsInFile;
 		
-		//this.userInput = userInput;
-		this.clientTxtArea = parent.txtArea;
-		this.txtField = parent.inputField;
-		//this.wordsInFile = test.wordsInFile;
 	}
 	
 	/*  Saving this code for later, found another way to do all this using the provided methods in keylistener.
@@ -100,24 +70,30 @@ public class Client extends JPanel implements Runnable, CaretListener {
 		s1 = parent.txtArea.getText();
 		s2 = parent.inputField.getText();
 		
-		//System.out.println("PTEXT:" + s2);
-		
 		if (s2.length() != s1.length()) {
 		
 			if (s1.substring(0,s2.length()).equals(s2)) {
+				
 				// make user know that what has been typed is right
-			
 				parent.progress.setText("<html><b color=#228B22>ALL GOOD, KEEP GOING!</b></html>");
 			
-				//System.out.println("You're doing fine!");
-				//System.out.println(s2.length());
 			}
 		
 			else {
-				// make user know that there has been made a mistak
+				// make user know that there has been made a mistake
 				parent.progress.setText("<html><b color=#FF0000>YOU MADE A MISTAKE! YOU NEED TO CORRECT IT!</b></html>");
-				//System.out.println("You made a mistake");
+				
 			}
 		}
+		// the player will now recieve a message that the game is over if all is typed in correctly.
+		else {
+			if (s1.substring(0,s2.length()).equals(s2) && !parent.txtArea.getText().isEmpty()) {
+				parent.progress.setText("<html><b color=#228B22>YOU ARE VICTORIOUS!</b></html>");
+				JOptionPane.showMessageDialog(null, "Congratz, you made it! Play again to improve your typing skills.", "Race Completed", JOptionPane.INFORMATION_MESSAGE);
+		
+			}
+		}
+		
 	} // caretUpdate
+	
 } // class
