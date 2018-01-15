@@ -45,7 +45,7 @@ public class Main extends JFrame implements ActionListener, FocusListener {
 		getContentPane().setLayout(new GridBagLayout());
 		getContentPane().setBackground(Color.WHITE);
 		
-		image = new ImageIcon("Images\\logo.png");
+		image = new ImageIcon("Images/logo.png");
 		checkImg = new ImageIcon("CheckImg/right.png");
 		wrongImg = new ImageIcon("CheckImg/wrong.png");
 		
