@@ -1,9 +1,2 @@
-﻿En server er en computer, som deler sine ressourcer såsom periferiudstyr og filer med andre computere, 
-kaldet klienter, på et datanet. Det er muligt for en computer at være klient og server samtidig. 
-Desuden kan det være et program, som modtager forespørgsler fra andre programmer og sender et svar tilbage.
-Inden for første kategori findes mange forskellige grupper, blandt andet dataserver, som hovedsageligt udfører 
-beregninger, og filserver, som hovedsageligt opbevarer filer.
-En servers formål er at give et antal klienter adgang til regnekraft og/eller data. 
-Et godt eksempel på dette er en webserver, der kan stille en HTML-side til rådighed for alle andre maskiner, 
-som er tilsluttet world wide web.
-Begreberne klient og server stammer fra 1970'ernes terminal- og mainframe-kultur.
+A server is a computer program that provides a service to another computer programs (and its user). In a data center, the physical computer that a server program runs in is also frequently referred to as a server. That machine may be a dedicated server or it may be used for other purposes as well.
+In the client/server programming model, a server program awaits and fulfills requests from client programs, which may be running in the same or other computers. A given application in a computer may function as a client with requests for services from other programs and also as a server of requests from other programs.
