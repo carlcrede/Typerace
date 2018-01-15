@@ -80,6 +80,7 @@ public class Main extends JFrame implements ActionListener, FocusListener {
         txtArea.setWrapStyleWord(true);
 		txtArea.setEditable(false);
 		txtArea.setBackground(getBackground());
+		txtArea.getDocument().addDocumentListener(txtHandler);
 		txtArea.setHighlighter(null);
 		txtArea.setLineWrap(true);
         c.fill = GridBagConstraints.HORIZONTAL;
