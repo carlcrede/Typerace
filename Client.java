@@ -1,11 +1,5 @@
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.util.Random;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
 import javax.swing.event.CaretEvent;
 import javax.swing.event.CaretListener;
 

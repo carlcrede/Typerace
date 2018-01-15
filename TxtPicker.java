@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 
 public class TxtPicker extends JPanel implements Runnable {
 
