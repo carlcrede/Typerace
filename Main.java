@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.ComponentOrientation;
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -7,11 +8,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+
+import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -20,9 +25,12 @@ public class Main extends JFrame implements ActionListener, FocusListener {
 	JButton start, quit;
 	JTextArea txtArea;
 	JTextField inputField;
+	JPanel btnpanel;
 	Server txtFile;
-	JLabel logo, progress;
+	JLabel logo, progress, right, wrong;
 	Client test;
+	ImageIcon image, checkImg, wrongImg;
+	GridBagConstraints c;
 	
 	final static boolean shouldFill = true;
     final static boolean shouldWeightX = true;
@@ -37,11 +45,13 @@ public class Main extends JFrame implements ActionListener, FocusListener {
 		getContentPane().setLayout(new GridBagLayout());
 		getContentPane().setBackground(Color.WHITE);
 		
-		ImageIcon image = new ImageIcon("Images\\logo.png");
+		image = new ImageIcon("Images\\logo.png");
+		checkImg = new ImageIcon("CheckImg/right.png");
+		wrongImg = new ImageIcon("CheckImg/wrong.png");
 		
 		test = new Client(this);
 		
-		GridBagConstraints c = new GridBagConstraints();
+		c = new GridBagConstraints();
 		
 		if (shouldFill) {
 			c.fill = GridBagConstraints.HORIZONTAL;
@@ -71,7 +81,7 @@ public class Main extends JFrame implements ActionListener, FocusListener {
 		txtArea.setHighlighter(null);
 		txtArea.setLineWrap(true);
         c.fill = GridBagConstraints.HORIZONTAL;
-        c.insets = new Insets(0,20,0,20);
+        c.insets = new Insets(20,20,0,20);
         c.weightx = 0.7;
         c.weighty = 0.3;
         c.gridx = 0;
@@ -84,6 +94,7 @@ public class Main extends JFrame implements ActionListener, FocusListener {
         progress = new JLabel("This will change if you make mistakes");
         progress.setFont(progress.getFont().deriveFont(20f));
         progress.setBackground(Color.GRAY);
+        c.insets = new Insets(20,20,20,20);
         c.fill = GridBagConstraints.HORIZONTAL;
         c.weightx = 0.0;
         c.weighty = 0.0;
@@ -117,18 +128,54 @@ public class Main extends JFrame implements ActionListener, FocusListener {
         
         start = new JButton("New Game");
         start.addActionListener(this);
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.gridx = 1;
-        c.gridy = 1;
-        getContentPane().add(start, c);
+        start.setMaximumSize(new Dimension(100,30));
+       // c.fill = GridBagConstraints.HORIZONTAL;
+      //  c.gridx = 1;
+       // c.gridy = 1;
+       // getContentPane().add(start, c);
         
         // quit btn that quits the game.
         quit = new JButton("Quit");
         quit.addActionListener(this);
+        quit.setMaximumSize(new Dimension(100,30));
+       // c.fill = GridBagConstraints.HORIZONTAL;
+        //c.gridx = 1;
+        //c.gridy = 3;
+        //getContentPane().add(quit, c);
+        
+        // panel holding btns
+        btnpanel = new JPanel();
+        btnpanel.setLayout(new BoxLayout(btnpanel, BoxLayout.PAGE_AXIS));
+        btnpanel.add(start);
+        btnpanel.add(Box.createRigidArea(new Dimension (110,5)));
+        btnpanel.add(quit);
+        btnpanel.setBackground(Color.white);
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 1;
-        c.gridy = 3;
-        getContentPane().add(quit, c);
+        c.gridy = 1;
+        getContentPane().add(btnpanel, c);
+        
+        // labels for image showing if you've made a mistake. Quite messy setup, just an experiment.
+        
+        right = new JLabel(checkImg);
+        right.setVisible(false);
+        c.fill = GridBagConstraints.HORIZONTAL;
+		c.weightx = 0.0;
+		c.weighty = 0.0;
+		c.gridx = 1;
+		c.gridy = 3;
+		getContentPane().add(right, c);
+		
+		wrong = new JLabel(wrongImg);
+        wrong.setVisible(false);
+        c.fill = GridBagConstraints.HORIZONTAL;
+		c.weightx = 0.0;
+		c.weighty = 0.0;
+		c.gridx = 1;
+		c.gridy = 3;
+		getContentPane().add(wrong, c);
+		
+		
         
         // thread - putting random file into textarea. Picking and sending the file is to be handled by server,
         // putting it into textarea can still be handled by client. needs to be corrected.
@@ -156,6 +203,8 @@ public class Main extends JFrame implements ActionListener, FocusListener {
 			txtArea.setText("");
 			inputField.setText("");
 			inputField.requestFocus();
+			right.setVisible(false);
+			wrong.setVisible(false);
 			test.start();
 			
 			// makes a request to start the game to the server
@@ -186,6 +235,14 @@ public class Main extends JFrame implements ActionListener, FocusListener {
 		JOptionPane.showMessageDialog(null,
 		"Welcome to the DTUeven Type?\n" + "Our take on the classic online typing game.\n" + "Have fun!",
 		"Welcome to DTUeven Type?", JOptionPane.INFORMATION_MESSAGE);
+		
+		Object[] possibleValues = { "Get rekt", "Gene Moore", "Plumbus" };
+
+		 Object selectedValue = JOptionPane.showInputDialog(null,
+		             "Choose one", "Input",
+		             JOptionPane.INFORMATION_MESSAGE, null,
+		             possibleValues, possibleValues[0]);
+
 		
 		doIt.setTitle("DTUeven Type? 1.0"); // Set title on window
 		doIt.setSize(800, 600); // Set size

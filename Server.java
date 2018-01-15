@@ -59,7 +59,7 @@ public class Server extends JPanel implements Runnable {
 			wordsInFile.add(w);
 		}
 		
-		// printing each word from the arraylist + a space to the textarea.
+		// printing each word from the arraylist + a space between every word to the textarea.
 
 		for (int i = 0; i < wordsInFile.size(); i++) {
 			parent.txtArea.setText(parent.txtArea.getText() + wordsInFile.get(i) + " ");

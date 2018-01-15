@@ -1,3 +1,5 @@
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.Random;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -8,7 +10,8 @@ import javax.swing.event.CaretEvent;
 import javax.swing.event.CaretListener;
 
 /*
- * 
+ * This class is suppose to take care of the game
+ * mecanic itself.
  * 
  */
 
@@ -29,6 +32,7 @@ public class Client extends JPanel implements Runnable, CaretListener {
 		this.clientLabel = parent.progress;
 		
 	}
+	
 	
 	/*  Saving this code for later, found another way to do all this using the provided methods in keylistener.
 	// change the char into a String and store it.
@@ -73,16 +77,16 @@ public class Client extends JPanel implements Runnable, CaretListener {
 		if (s2.length() != s1.length()) {
 		
 			if (s1.substring(0,s2.length()).equals(s2)) {
-				
 				// make user know that what has been typed is right
 				parent.progress.setText("<html><b color=#228B22>ALL GOOD, KEEP GOING!</b></html>");
-			
+				parent.right.setVisible(true);
+				
 			}
-		
 			else {
 				// make user know that there has been made a mistake
 				parent.progress.setText("<html><b color=#FF0000>YOU MADE A MISTAKE! YOU NEED TO CORRECT IT!</b></html>");
-				
+				parent.right.setVisible(false);
+				parent.wrong.setVisible(true);
 			}
 		}
 		// the player will now recieve a message that the game is over if all is typed in correctly.
@@ -90,7 +94,7 @@ public class Client extends JPanel implements Runnable, CaretListener {
 			if (s1.substring(0,s2.length()).equals(s2) && !parent.txtArea.getText().isEmpty()) {
 				parent.progress.setText("<html><b color=#228B22>YOU ARE VICTORIOUS!</b></html>");
 				JOptionPane.showMessageDialog(null, "Congratz, you made it! Play again to improve your typing skills.", "Race Completed", JOptionPane.INFORMATION_MESSAGE);
-		
+				
 			}
 		}
 		
