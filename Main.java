@@ -29,7 +29,6 @@ public class Main extends JFrame implements ActionListener, FocusListener {
 	Server txtFile;
 	JLabel logo, progress, right, wrong;
 	Client caret;
-	TextHandler txtHandler;
 	ImageIcon image, checkImg, wrongImg;
 	GridBagConstraints c;
 	
@@ -51,7 +50,6 @@ public class Main extends JFrame implements ActionListener, FocusListener {
 		wrongImg = new ImageIcon("CheckImg/wrong.png");
 		
 		caret = new Client(this);
-		txtHandler = new TextHandler(this);
 		
 		c = new GridBagConstraints();
 		
@@ -80,7 +78,6 @@ public class Main extends JFrame implements ActionListener, FocusListener {
         txtArea.setWrapStyleWord(true);
 		txtArea.setEditable(false);
 		txtArea.setBackground(getBackground());
-		txtArea.getDocument().addDocumentListener(txtHandler);
 		txtArea.setHighlighter(null);
 		txtArea.setLineWrap(true);
         c.fill = GridBagConstraints.HORIZONTAL;
@@ -111,7 +108,6 @@ public class Main extends JFrame implements ActionListener, FocusListener {
         // not focusable. The client class uses this area to 
         inputField = new JTextField();
         inputField.addCaretListener(caret);
-        inputField.getDocument().addDocumentListener(txtHandler);
         c.insets = new Insets(0,20,20,20);
         inputField.setFocusable(true);
         inputField.addFocusListener(this);
@@ -240,7 +236,7 @@ public class Main extends JFrame implements ActionListener, FocusListener {
 		"Welcome to the DTUeven Type?\n" + "Our take on the classic online typing game.\n" + "Have fun!",
 		"Welcome to DTUeven Type?", JOptionPane.INFORMATION_MESSAGE);
 		
-		Object[] possibleValues = { "Get rekt", "Gene Moore", "Plumbus" };
+		Object[] possibleValues = { "Klamydia", "Pest", "Blindhed" };
 
 		 Object selectedValue = JOptionPane.showInputDialog(null,
 		             "Choose one", "Input",
