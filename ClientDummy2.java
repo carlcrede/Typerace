@@ -8,7 +8,7 @@ public class ClientDummy2 {
 
 	public static void main (String [] args) {
 		String adress = "localhost";
-		int port = 9001;
+		int port = 1234;
 		Scanner in = new Scanner(System.in);
 		String s;
 		//Input

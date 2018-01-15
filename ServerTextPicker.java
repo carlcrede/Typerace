@@ -12,7 +12,7 @@ import java.io.*;
 public class ServerTextPicker {
 	
 	// String med getFile()-teksten
-	static String chosenText = "";
+	public static String chosenText = "";
 	
 	public static void main (String[] args) {
 		getFile();

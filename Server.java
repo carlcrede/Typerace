@@ -7,13 +7,13 @@ import java.io.*;
 
 public class Server {
 	
+	public static Socket socket = null;
+	public static ServerSocket serverSock = null;
+	
 	public static void main (String[] args) {
-		//ArrayList<Integer> player = new ArrayList<Integer>();
-		Socket socket = null;
-		ServerSocket serverSock = null;
 		
 		try {
-			serverSock = new ServerSocket(9001);
+			serverSock = new ServerSocket(1234);
 		} catch (Exception ex) {
 			System.out.println("can't start server");
 		
@@ -28,5 +28,9 @@ public class Server {
 			new ClientConnection(socket).start();
 		
 		}
+		
+		// tråde
+		
+		
 	}
 }
