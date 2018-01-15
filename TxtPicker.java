@@ -10,12 +10,12 @@ import java.util.Scanner;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
-public class Server extends JPanel implements Runnable {
+public class TxtPicker extends JPanel implements Runnable {
 
 	Main parent;
 	ArrayList<String> wordsInFile;
 
-	public Server(Main parent) {
+	public TxtPicker(Main parent) {
 		this.parent = parent;
 	
 	} // constructor

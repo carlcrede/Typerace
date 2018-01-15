@@ -26,7 +26,7 @@ public class Main extends JFrame implements ActionListener, FocusListener {
 	JTextArea txtArea;
 	JTextField inputField;
 	JPanel btnpanel;
-	Server txtFile;
+	TxtPicker txtFile;
 	JLabel logo, progress, right, wrong;
 	Client caret;
 	ImageIcon image, checkImg, wrongImg;
@@ -179,7 +179,7 @@ public class Main extends JFrame implements ActionListener, FocusListener {
         
         // thread - putting random file into textarea. Picking and sending the file is to be handled by server,
         // putting it into textarea can still be handled by client. needs to be corrected.
-        txtFile = new Server(this);
+        txtFile = new TxtPicker(this);
         Thread tf = new Thread(txtFile);
         tf.start();
         
@@ -198,7 +198,7 @@ public class Main extends JFrame implements ActionListener, FocusListener {
 		// if start button is pressed, right now it clears the inputfield, and creates a new thread from the server class,
 		// which puts a new txtfile in the textarea. Off course this is suppose to send info to the server, when we get that running.
 		else if (e.getSource() == start) {	
-			Server tst = new Server(this);
+			TxtPicker tst = new TxtPicker(this);
 			Thread test = new Thread(tst);
 			txtArea.setText("");
 			inputField.setText("");
