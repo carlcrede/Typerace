@@ -10,27 +10,75 @@ public class Server {
 	public static Socket socket = null;
 	public static ServerSocket serverSock = null;
 	
+	public static int noOfClients = 0;
+	public static int noOfReadyClients = 0;
+	
+	public static ClientConnection[] playerOutputs = new ClientConnection[2]; // output to players
+	public static InputToServer[] playerInputs = new InputToServer[2]; // input from players
+	
+	public static boolean itIsTimeToAnswer = false;
+	public static boolean winnerFound = false;
+	public static boolean listenToClient = false;
+	public static boolean clientsAreReady = false;
+	
+	
 	public static void main (String[] args) {
 		
 		try {
 			serverSock = new ServerSocket(1234);
 		} catch (Exception ex) {
 			System.out.println("can't start server");
-		
 		}
+		
+		// Starter server
 		while (true) {
-			try {
-			socket = serverSock.accept();
+			// Tillader to clients
+			while (noOfClients < 2) {
+				// Wait for client to connect
+				try { socket = serverSock.accept();
+				} catch (IOException e1) {
+					System.out.println("can't connect to client");
+				}
+				// make input object
+				InputToServer newInput = new InputToServer(socket);
+				// add to array of inputs
+				playerInputs[noOfClients] = newInput;
+				// make and start thread
+				Thread inT = new Thread(newInput);
+				inT.start();
+				
+				ClientConnection newOutput =  new ClientConnection(socket);
+				playerOutputs[noOfClients] = newOutput;
+				Thread outT = new Thread(newOutput);
+				outT.start();
+
+				noOfClients++;
+				}
 			
-			} catch (IOException e1) {
-				System.out.println("can't connect to client");
+			// starter spillet
+			if (noOfClients == 2) {
+				itIsTimeToAnswer = true;
+				listenToClient = true;
+				
+			}	
+			
+			// or noOfReadyClients == 2
+			if ((playerInputs[0].equals("Ready")) && playerInputs[1].equals("Ready")) {
+				clientsAreReady = true;
 			}
-			new ClientConnection(socket).start();
-		
+			
+			// while game is running
+			while (winnerFound = true) {
+			ClientConnection.pw.println("Game Over");
+			try {
+				Server.socket.close();
+			} catch (IOException e) {
+				System.out.println("Couldn't close server");
+			
+			}
+			}
 		}
-		
-		// tråde
-		
-		
 	}
+	
+
 }

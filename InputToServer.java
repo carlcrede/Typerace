@@ -7,11 +7,8 @@ import java.io.*;
 
 public class InputToServer implements Runnable{
 	
-	public static boolean listenToClient = true;
+	public String clientOutput;
 	
-	String clientOutput;
-	
-	public String clientInput;
 	// might be the wrong socket
 	Socket sock = Server.socket;
 	
@@ -27,27 +24,31 @@ public class InputToServer implements Runnable{
 	
 
 	public void run() {
-		while (listenToClient == true) {
+		while (Server.listenToClient == true) {
 			// Scan for clientInput
 			try {
 				clientOutput = bir.readLine();
-			} catch (IOException e) {
+				
+				Thread.sleep(50);
+			} catch (IOException | InterruptedException e) {
 				System.out.println("Can't read input from client");
 			}
-			
-			if (clientOutput.equals("Ready for new game")) {
-				// set en countervalue til +1, hvis countervalue er 2 sendes
-				// ready til clienterne
-				
-			}
-			try {
-				Thread.sleep(200);
-			} catch (InterruptedException e) {
-				System.out.println("OutputFromClient-thread can't sleep");
-			}
+			parseClientOutput(clientOutput);
+		}
+	} // run
+	
+	private void parseClientOutput(String input) {
+		if (input.equals("close")) {
 		}
 		
-	}
-
-
+		else if (input.equals("Ready")) {
+		Server.noOfReadyClients++;	
+		}
+		
+		else if (input.equals("wins")) {
+			Server.winnerFound = true;
+		}
+	
+	} // parser
+	
 }

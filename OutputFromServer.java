@@ -15,7 +15,7 @@ public class OutputFromServer implements Runnable {
 	
 	PrintWriter pw;
 	
-	public boolean timeToAnswer = false;
+	public boolean itIsTimeToAnswer = false;
 	
 	// modtager input fra klient
 	//Scanner clientInput = new Scanner(socket.getInputStream());
@@ -23,7 +23,7 @@ public class OutputFromServer implements Runnable {
 
 	public void run() {
 		
-		while (timeToAnswer == true) {
+		while (itIsTimeToAnswer == true) {
 			
 			// Send responds
 			if (false) {
