@@ -66,8 +66,8 @@ public class Main extends JFrame implements ActionListener, FocusListener {
 		// image on the top
 		logo = new JLabel(image);
 		c.fill = GridBagConstraints.HORIZONTAL;
-		c.weightx = 0.0;
-		c.weighty = 0.0;
+		c.weightx = 1;
+		c.weighty = 0.1;
 		c.gridx = 0;
 		c.gridy = 0;
 		getContentPane().add(logo, c);
@@ -81,9 +81,9 @@ public class Main extends JFrame implements ActionListener, FocusListener {
 		txtArea.setHighlighter(null);
 		txtArea.setLineWrap(true);
         c.fill = GridBagConstraints.HORIZONTAL;
-        c.insets = new Insets(20,20,0,20);
-        c.weightx = 0.7;
-        c.weighty = 0.3;
+        c.insets = new Insets(0,20,0,0);
+        c.weightx = 0.9;
+        c.weighty = 0.4;
         c.gridx = 0;
         c.gridy = 1;
         getContentPane().add(txtArea, c);
@@ -94,11 +94,10 @@ public class Main extends JFrame implements ActionListener, FocusListener {
         progress = new JLabel("This will change if you make mistakes");
         progress.setFont(progress.getFont().deriveFont(20f));
         progress.setBackground(Color.GRAY);
-        c.insets = new Insets(20,20,20,20);
+        c.insets = new Insets(10,20,20,0);
         c.fill = GridBagConstraints.HORIZONTAL;
-        c.weightx = 0.0;
-        c.weighty = 0.0;
-        c.gridwidth = 2;
+        c.weightx = 0.9;
+        c.weighty = 0.1;
         c.gridx = 0;
         c.gridy = 2;
         getContentPane().add(progress, c);
@@ -108,7 +107,7 @@ public class Main extends JFrame implements ActionListener, FocusListener {
         // not focusable. The client class uses this area to 
         inputField = new JTextField();
         inputField.addCaretListener(caret);
-        c.insets = new Insets(0,20,20,20);
+        c.insets = new Insets(0,20,20,0);
         inputField.setFocusable(true);
         inputField.addFocusListener(this);
         inputField.setBackground(getBackground());
@@ -116,7 +115,8 @@ public class Main extends JFrame implements ActionListener, FocusListener {
         inputField.setFont((inputField.getFont().deriveFont(16f)));
         inputField.setText("Click here to start typing!");
         c.fill = GridBagConstraints.HORIZONTAL;
-        c.weighty = 0.3;
+        c.weighty = 0.4;
+        c.weightx = 0.9;
         c.gridx = 0;
         c.gridy = 3;
         getContentPane().add(inputField, c);
@@ -128,29 +128,23 @@ public class Main extends JFrame implements ActionListener, FocusListener {
         
         start = new JButton("New Game");
         start.addActionListener(this);
-        start.setMaximumSize(new Dimension(100,30));
-       // c.fill = GridBagConstraints.HORIZONTAL;
-      //  c.gridx = 1;
-       // c.gridy = 1;
-       // getContentPane().add(start, c);
+        start.setMaximumSize(new Dimension(1000,800));
         
         // quit btn that quits the game.
         quit = new JButton("Quit");
         quit.addActionListener(this);
-        quit.setMaximumSize(new Dimension(100,30));
-       // c.fill = GridBagConstraints.HORIZONTAL;
-        //c.gridx = 1;
-        //c.gridy = 3;
-        //getContentPane().add(quit, c);
+        quit.setMaximumSize(new Dimension(1000,800));
         
         // panel holding btns
         btnpanel = new JPanel();
         btnpanel.setLayout(new BoxLayout(btnpanel, BoxLayout.PAGE_AXIS));
         btnpanel.add(start);
-        btnpanel.add(Box.createRigidArea(new Dimension (110,5)));
+        btnpanel.add(Box.createRigidArea(new Dimension (110,20)));
         btnpanel.add(quit);
         btnpanel.setBackground(Color.white);
+        c.insets = new Insets(0,0,0,40);
         c.fill = GridBagConstraints.HORIZONTAL;
+        c.weightx = 0.1;
         c.gridx = 1;
         c.gridy = 1;
         getContentPane().add(btnpanel, c);
@@ -160,23 +154,24 @@ public class Main extends JFrame implements ActionListener, FocusListener {
         right = new JLabel(checkImg);
         right.setVisible(false);
         c.fill = GridBagConstraints.HORIZONTAL;
-		c.weightx = 0.0;
+        c.insets = new Insets(0,20,0,0);
+		c.weightx = 0.1;
 		c.weighty = 0.0;
 		c.gridx = 1;
-		c.gridy = 3;
+		c.gridy = 2;
 		getContentPane().add(right, c);
 		
 		wrong = new JLabel(wrongImg);
         wrong.setVisible(false);
         c.fill = GridBagConstraints.HORIZONTAL;
-		c.weightx = 0.0;
+        c.insets = new Insets(0,20,0,0);
+		c.weightx = 0.1;
 		c.weighty = 0.0;
 		c.gridx = 1;
-		c.gridy = 3;
+		c.gridy = 2;
 		getContentPane().add(wrong, c);
 		
 		
-        
         // thread - putting random file into textarea. Picking and sending the file is to be handled by server,
         // putting it into textarea can still be handled by client. needs to be corrected.
         txtFile = new TxtPicker(this);
