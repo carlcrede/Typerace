@@ -18,18 +18,13 @@ import javax.swing.event.CaretListener;
 public class Client extends JPanel implements Runnable, CaretListener {
 
 	Main parent;
-	Random rand;
-	Server test;
 	String s1;
 	String s2;
-	JLabel clientLabel;
 
 
 	public Client(Main parent) {
 
 		this.parent = parent;
-		this.rand = new Random();
-		this.clientLabel = parent.progress;
 		
 	}
 	

@@ -28,7 +28,8 @@ public class Main extends JFrame implements ActionListener, FocusListener {
 	JPanel btnpanel;
 	Server txtFile;
 	JLabel logo, progress, right, wrong;
-	Client test;
+	Client caret;
+	TextHandler txtHandler;
 	ImageIcon image, checkImg, wrongImg;
 	GridBagConstraints c;
 	
@@ -49,7 +50,8 @@ public class Main extends JFrame implements ActionListener, FocusListener {
 		checkImg = new ImageIcon("CheckImg/right.png");
 		wrongImg = new ImageIcon("CheckImg/wrong.png");
 		
-		test = new Client(this);
+		caret = new Client(this);
+		txtHandler = new TextHandler(this);
 		
 		c = new GridBagConstraints();
 		
@@ -107,7 +109,8 @@ public class Main extends JFrame implements ActionListener, FocusListener {
         // textfield where user writes the text
         // not focusable. The client class uses this area to 
         inputField = new JTextField();
-        inputField.addCaretListener(test);
+        inputField.addCaretListener(caret);
+        inputField.getDocument().addDocumentListener(txtHandler);
         c.insets = new Insets(0,20,20,20);
         inputField.setFocusable(true);
         inputField.addFocusListener(this);
