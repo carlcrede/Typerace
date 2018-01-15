@@ -13,7 +13,7 @@ import java.net.Socket;
 
 public class ClientConnection extends Thread {
 	Socket socket;
-	String threadName;
+	static ArrayList<Clients> users = new ArrayList<Clients>();
 	
 	public ClientConnection (Socket clientSocket) {
 		this.socket = clientSocket;
@@ -33,7 +33,11 @@ public class ClientConnection extends Thread {
 		}
 		
 		
-		/*
+		
+		
+		
+		
+		
 		// String der sendes fra server til client
 		String msgForClient;
 		
@@ -83,5 +87,5 @@ public class ClientConnection extends Thread {
 				}
 			}
 		}
-	*/}
+	}
 }

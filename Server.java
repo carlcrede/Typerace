@@ -5,7 +5,7 @@ import java.util.Scanner;
 import java.net.ServerSocket;
 import java.io.*;
 
-public class Threadhandler {
+public class Server {
 	
 	public static void main (String[] args) {
 		//ArrayList<Integer> player = new ArrayList<Integer>();
