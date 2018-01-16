@@ -9,7 +9,7 @@ import javax.swing.event.CaretListener;
  * 
  */
 
-public class Client extends JPanel implements Runnable, CaretListener {
+public class Client extends JPanel implements CaretListener {
 
 	Main parent;
 	String s1;
@@ -52,16 +52,11 @@ public class Client extends JPanel implements Runnable, CaretListener {
 		}
 	} */		
 	
-	public void run() {
-
-
-	}
-
-	// get the char that is pressed on the keyboard.
 	public void caretUpdate(CaretEvent e) {
 		
 		s1 = parent.txtArea.getText();
 		s2 = parent.inputField.getText();
+		
 		
 		if (s2.length() != s1.length()) {
 		
@@ -84,6 +79,7 @@ public class Client extends JPanel implements Runnable, CaretListener {
 				parent.progress.setText("<html><b color=#228B22>YOU ARE VICTORIOUS!</b></html>");
 				JOptionPane.showMessageDialog(null, "Congratz, you made it! Play again to improve your typing skills.", "Race Completed", JOptionPane.INFORMATION_MESSAGE);
 				OutputFromClient.iWin = true;
+				InputToClient.imTheWinner = true;
 			}
 		}
 		

@@ -6,6 +6,9 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
+
+import javax.swing.JOptionPane;
+
 import java.net.ServerSocket;
 import java.io.*;
 
@@ -14,6 +17,8 @@ public class InputToClient implements Runnable{
 	public static boolean listenToServer = true;
 	
 	String serverOutput;
+	
+	public static boolean imTheWinner = false;
 	
 	public String serverInput;
 	
@@ -60,6 +65,14 @@ public class InputToClient implements Runnable{
 			}
 			
 			else if (clientInput.equals("Game Over")) {
+				if (imTheWinner = false) {
+					JOptionPane.showMessageDialog(null, "Du er stadig en fed taber i det her felt", "Du tabte stort", JOptionPane.INFORMATION_MESSAGE);
+				}
+				
+				else if (imTheWinner = true) {
+					
+				}
+				
 				// lav popup der siger at du tabte / game over
 				
 			}
