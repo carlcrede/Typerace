@@ -177,9 +177,9 @@ public class Main extends JFrame implements ActionListener, FocusListener {
 		
         // thread - putting random file into textarea. Picking and sending the file is to be handled by server,
         // putting it into textarea can still be handled by client. needs to be corrected.
-        txtFile = new TxtPicker(this);
+        /*txtFile = new TxtPicker(this);
         Thread tf = new Thread(txtFile);
-        tf.start();
+        tf.start();*/
         
         
         } // constructor
@@ -196,14 +196,15 @@ public class Main extends JFrame implements ActionListener, FocusListener {
 		// if start button is pressed, right now it clears the inputfield, and creates a new thread from the server class,
 		// which puts a new txtfile in the textarea. Off course this is suppose to send info to the server, when we get that running.
 		else if (e.getSource() == start) {	
-			TxtPicker tst = new TxtPicker(this);
-			Thread test = new Thread(tst);
+			//TxtPicker tst = new TxtPicker(this);
+			//Thread test = new Thread(tst);
 			txtArea.setText("");
 			inputField.setText("");
 			inputField.requestFocus();
 			right.setVisible(false);
 			wrong.setVisible(false);
-			test.start();
+			//test.start();
+			
 			
 			// makes a request to start the game to the server
 			// need a countdown, TODO
@@ -233,14 +234,7 @@ public class Main extends JFrame implements ActionListener, FocusListener {
 		JOptionPane.showMessageDialog(null,
 		"Welcome to the DTUeven Type?\n" + "Our take on the classic online typing game.\n" + "Have fun!",
 		"Welcome to DTUeven Type?", JOptionPane.INFORMATION_MESSAGE);
-		
-		Object[] possibleValues = { "Klamydia", "Pest", "Blindhed" };
-
-		 Object selectedValue = JOptionPane.showInputDialog(null,
-		             "Choose one", "Input",
-		             JOptionPane.INFORMATION_MESSAGE, null,
-		             possibleValues, possibleValues[0]);
-		 
+ 
 		 // Connection to server
 		 String adress = "localhost";
 			
@@ -250,12 +244,9 @@ public class Main extends JFrame implements ActionListener, FocusListener {
 				// skal indlaeses i main
 				sock = new Socket(adress,port);
 			} catch (IOException e) {
-				System.out.println("Can't open inputstream to client");
+				System.out.println("Can't connect to server");
 			} //
 			
-			
-		 
-		 
 		
 		doIt.setTitle("DTUeven Type? 1.0"); // Set title on window
 		doIt.setSize(800, 600); // Set size
