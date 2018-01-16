@@ -10,7 +10,6 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.io.IOException;
 import java.net.Socket;
-
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -30,10 +29,13 @@ public class Main extends JFrame implements ActionListener, FocusListener {
 	JPanel btnpanel;
 	TxtPicker txtFile;
 	JLabel logo, progress, right, wrong;
-	Client caret;
-	InputToClient itc;
 	ImageIcon image, checkImg, wrongImg;
 	GridBagConstraints c;
+	
+	Client caret;
+	InputToClient inputToClient;
+	OutputFromClient outputFromClient;
+	
 	public static Socket sock;
 	
 	final static boolean shouldFill = true;
@@ -176,8 +178,16 @@ public class Main extends JFrame implements ActionListener, FocusListener {
 		getContentPane().add(wrong, c);
 		
 		
-		// server threads
-		itc = new InputToClient(this);
+		// client communication threads
+		// client listens for server output
+		inputToClient = new InputToClient(sock);
+		Thread itc = new Thread(inputToClient);
+		itc.start();
+		
+		// client output
+		outputFromClient = new OutputFromClient(sock);
+		Thread ofc = new Thread(outputFromClient);
+		ofc.start();
 		
         // thread - putting random file into textarea. Picking and sending the file is to be handled by server,
         // putting it into textarea can still be handled by client. needs to be corrected.
