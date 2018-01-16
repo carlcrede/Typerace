@@ -54,6 +54,7 @@ public class Server {
 				outT.start();
 
 				noOfClients++;
+				System.out.println("Client connected to server");
 				}
 			// opens for communication
 			if (itIsTimeToAnswer == false && itIsTimeToAnswer == false) {
