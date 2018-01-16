@@ -21,7 +21,7 @@ public class InputToClient {
 	
 	public static String chosenText;
 	
-	InputToClient(Socket sock) {
+	public InputToClient(Socket sock) {
 		try {
 			bir = new BufferedReader(new InputStreamReader(Main.sock.getInputStream()));
 		} catch (IOException e) {

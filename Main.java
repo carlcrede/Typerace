@@ -31,6 +31,7 @@ public class Main extends JFrame implements ActionListener, FocusListener {
 	TxtPicker txtFile;
 	JLabel logo, progress, right, wrong;
 	Client caret;
+	InputToClient itc;
 	ImageIcon image, checkImg, wrongImg;
 	GridBagConstraints c;
 	public static Socket sock;
@@ -175,6 +176,9 @@ public class Main extends JFrame implements ActionListener, FocusListener {
 		getContentPane().add(wrong, c);
 		
 		
+		// server threads
+		itc = new InputToClient(this);
+		
         // thread - putting random file into textarea. Picking and sending the file is to be handled by server,
         // putting it into textarea can still be handled by client. needs to be corrected.
         /*txtFile = new TxtPicker(this);
@@ -204,6 +208,7 @@ public class Main extends JFrame implements ActionListener, FocusListener {
 			right.setVisible(false);
 			wrong.setVisible(false);
 			//test.start();
+			InputToClient.chosenText
 			
 			
 			// makes a request to start the game to the server
