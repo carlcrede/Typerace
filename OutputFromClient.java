@@ -60,14 +60,14 @@ public class OutputFromClient implements Runnable {
 		
 		//send text
 		// textRecived == true when InputToClient recives textfile
-		if (textRecived == true) {
+		if (textRecived) {
 			pw.println("Ready");
 			pw.flush();
 			textRecived = false;
 			
 		}
 		
-		else if (iWin = true) {
+		else if (iWin) {
 			pw.println("wins");
 			pw.flush();
 		}
