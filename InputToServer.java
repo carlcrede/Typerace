@@ -9,8 +9,7 @@ public class InputToServer implements Runnable{
 	
 	public String clientOutput;
 	
-	Socket sock;
-	
+	Socket sock;	
 	BufferedReader bir;
 	
 	InputToServer(Socket sock) {

@@ -29,12 +29,11 @@ public class ClientConnection implements Runnable {
 		
 		try {
 			pw = new PrintWriter(socket.getOutputStream());
-			System.out.println("PrintWriter åbnet");
 		} catch (IOException e) {
 			System.out.println("PrintWriter pw kunne ikke åbnes");
 		}
 		// Send to client
-			while (true) {	
+			while (true) {
 				if (Server.itIsTimeToAnswer) {
 					// Send responds
 					parseServerOutput(serverOutput);

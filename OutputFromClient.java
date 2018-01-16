@@ -47,16 +47,16 @@ public class OutputFromClient implements Runnable {
 	}
 	
 	public void run() {
-		
+		System.out.println("Client output run åbner");
 		// Send to Server
 				while (true) {
 					// Send responds
-					parseClientOutput(clientOutput);
+					parseClientOutput();
 				}
 
 		}//run end
 	
-	public void parseClientOutput(String output) {
+	public void parseClientOutput() {
 		
 		//send text
 		// textRecived == true when InputToClient recives textfile
@@ -64,6 +64,7 @@ public class OutputFromClient implements Runnable {
 			pw.println("Ready");
 			pw.flush();
 			textRecived = false;
+			System.out.println("jeg er klar");
 			
 		}
 		
