@@ -83,7 +83,7 @@ public class Client extends JPanel implements Runnable, CaretListener {
 			if (s1.substring(0,s2.length()).equals(s2) && !parent.txtArea.getText().isEmpty()) {
 				parent.progress.setText("<html><b color=#228B22>YOU ARE VICTORIOUS!</b></html>");
 				JOptionPane.showMessageDialog(null, "Congratz, you made it! Play again to improve your typing skills.", "Race Completed", JOptionPane.INFORMATION_MESSAGE);
-				
+				OutputFromClient.iWin = true;
 			}
 		}
 		

@@ -24,7 +24,7 @@ import javax.swing.JTextField;
 public class Main extends JFrame implements ActionListener, FocusListener {
 	
 	JButton start, quit;
-	JTextArea txtArea;
+	public static JTextArea txtArea;
 	JTextField inputField;
 	JPanel btnpanel;
 	TxtPicker txtFile;

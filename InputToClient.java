@@ -56,10 +56,12 @@ public class InputToClient implements Runnable{
 			}
 			else if (clientInput.equals("Start Game")) {
 				// game skal starte nu
+				Main.txtArea.setText(chosenText);
 			}
 			
 			else if (clientInput.equals("Game Over")) {
 				// lav popup der siger at du tabte / game over
+				
 			}
 			
 			try {
