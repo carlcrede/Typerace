@@ -32,8 +32,8 @@ public class Main extends JFrame implements ActionListener, FocusListener {
 	GridBagConstraints c;
 	
 	Client caret;
-	InputToClient inputToClient;
-	OutputFromClient outputFromClient;
+	static InputToClient inputToClient;
+	static OutputFromClient outputFromClient;
 	
 	public static Socket sock;
 	
@@ -177,16 +177,7 @@ public class Main extends JFrame implements ActionListener, FocusListener {
 		getContentPane().add(wrong, c);
 		
 		
-		// client communication threads
-		// client listens for server output
-		inputToClient = new InputToClient(sock);
-		Thread itc = new Thread(inputToClient);
-		itc.start();
-		
-		// client output
-		outputFromClient = new OutputFromClient(sock);
-		Thread ofc = new Thread(outputFromClient);
-		ofc.start();
+
 	    
         } // constructor
 	
@@ -238,7 +229,7 @@ public class Main extends JFrame implements ActionListener, FocusListener {
 		"Welcome to DTUeven Type?", JOptionPane.INFORMATION_MESSAGE);
  
 		 // Connection to server
-		 String adress = "localhost";
+		 String adress = "10.16.110.163";
 			
 			int port = 1234;
 			
@@ -248,6 +239,17 @@ public class Main extends JFrame implements ActionListener, FocusListener {
 			} catch (IOException e) {
 				System.out.println("Can't connect to server");
 			} //
+			
+			// client communication threads
+			// client listens for server output
+			inputToClient = new InputToClient(sock);
+			Thread itc = new Thread(inputToClient);
+			itc.start();
+			
+			// client output
+			outputFromClient = new OutputFromClient(sock);
+			Thread ofc = new Thread(outputFromClient);
+			ofc.start();
 			
 		
 		doIt.setTitle("DTUeven Type? 1.0"); // Set title on window
