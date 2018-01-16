@@ -25,9 +25,9 @@ public class Main extends JFrame implements ActionListener, FocusListener {
 	
 	JButton start, quit;
 	public static JTextArea txtArea;
-	JTextField inputField;
+	public static JTextField inputField;
 	JPanel btnpanel;
-	JLabel logo, progress, right, wrong;
+	public static JLabel logo, progress, right, wrong;
 	ImageIcon image, checkImg, wrongImg;
 	GridBagConstraints c;
 	
