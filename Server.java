@@ -57,13 +57,10 @@ public class Server {
 				System.out.println("Client connected to server");
 				}
 			// opens for communication
-			if ((!itIsTimeToAnswer) && (!itIsTimeToAnswer)) {
+			if ((!itIsTimeToAnswer) && (!listenToClient)) {
 			itIsTimeToAnswer = true;
 			listenToClient = true;
 			
-			// virker
-			System.out.println("der åbnes for in og out");
-			System.out.println(noOfClients);
 			}
 			
 			if (noOfReadyClients == 2) {

@@ -42,7 +42,6 @@ public class InputToClient implements Runnable{
 			try {
 				serverOutput = bir.readLine();
 				if (serverOutput != null) {
-					System.out.println("Line received!:");
 					System.out.println(serverOutput);
 				} else {
 				
@@ -73,7 +72,7 @@ public class InputToClient implements Runnable{
 			
 			else if (clientInput.equals("Game Over")) {
 				if (!imTheWinner) {
-					JOptionPane.showMessageDialog(null, "Du er stadig en fed taber i det her felt", "Du tabte stort", JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(null, "Game Over", "TypeRacer", JOptionPane.INFORMATION_MESSAGE);
 				}
 				
 				else if (imTheWinner) {

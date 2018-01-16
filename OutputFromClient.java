@@ -30,24 +30,18 @@ public class OutputFromClient implements Runnable {
 	
 	Socket sock;
 	
-	// main skal indeholde
-	
-	/*
-	try {
-	Socket sock = new Socket (OutputFromClient.adress, OutputFromClient.port);
-	BufferedReader bir = new BufferedReader(new InputStreamReader(sock.getInputStream));
-	PrintWriter pw = new PrintWriter(sock.getOutputStream());
-	*/
 	 
 	
 	public OutputFromClient (Socket sock) {
-			// this.hvor main ligger.sock = new Socket(OutputFromClient.adress, OutputFromClient.port)
-			this.sock  = sock;
+			try {
+				pw = new PrintWriter(sock.getOutputStream());
+				} catch (IOException e) {
+					System.out.println("Can't open PrintWriter for client");
+			}
 
 	}
 	
 	public void run() {
-		System.out.println("Client output run åbner");
 		// Send to Server
 				while (true) {
 					// Send responds
@@ -59,12 +53,10 @@ public class OutputFromClient implements Runnable {
 	public void parseClientOutput() {
 		
 		//send text
-		// textRecived == true when InputToClient recives textfile
 		if (textRecived) {
 			pw.println("Ready");
 			pw.flush();
 			textRecived = false;
-			System.out.println("jeg er klar");
 			
 		}
 		

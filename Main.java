@@ -229,7 +229,7 @@ public class Main extends JFrame implements ActionListener, FocusListener {
 		"Welcome to DTUeven Type?", JOptionPane.INFORMATION_MESSAGE);
  
 		 // Connection to server
-		 String adress = "";
+		 String adress = "192.168.1.122";
 			
 			int port = 1234;
 			

@@ -23,11 +23,10 @@ public class InputToServer implements Runnable{
 
 	public void run() {
 		while (true) {
-			if (Server.listenToClient) { // vil det virke?
-				// Scan for clientInput
+			if (Server.listenToClient) {
+				// Scan for clientoutput
 				try {
 					clientOutput = bir.readLine();
-					System.out.println("BufferedInputReader åbnes");
 				} catch (IOException e) {
 					System.out.println("Can't read input from client");
 				}
@@ -44,10 +43,7 @@ public class InputToServer implements Runnable{
 	} // run
 	
 	private void parseClientOutput(String input) {
-		if (input.equals("close")) {
-		}
-		
-		else if (input.equals("Ready")) {
+		if (input.equals("Ready")) {
 		Server.noOfReadyClients++;	
 		}
 		

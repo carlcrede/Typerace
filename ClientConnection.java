@@ -46,7 +46,6 @@ public class ClientConnection implements Runnable {
 		//send text
 		if (!textPicked) {
 			ServerTextPicker.getFile();
-			System.out.println("INFO: Text got - sending to client");
 			pw.print(ServerTextPicker.chosenText);
 			pw.flush();
 			textPicked = true;
