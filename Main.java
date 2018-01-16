@@ -27,7 +27,6 @@ public class Main extends JFrame implements ActionListener, FocusListener {
 	public static JTextArea txtArea;
 	JTextField inputField;
 	JPanel btnpanel;
-	TxtPicker txtFile;
 	JLabel logo, progress, right, wrong;
 	ImageIcon image, checkImg, wrongImg;
 	GridBagConstraints c;
@@ -188,14 +187,7 @@ public class Main extends JFrame implements ActionListener, FocusListener {
 		outputFromClient = new OutputFromClient(sock);
 		Thread ofc = new Thread(outputFromClient);
 		ofc.start();
-		
-        // thread - putting random file into textarea. Picking and sending the file is to be handled by server,
-        // putting it into textarea can still be handled by client. needs to be corrected.
-        /*txtFile = new TxtPicker(this);
-        Thread tf = new Thread(txtFile);
-        tf.start();*/
-        
-        
+	    
         } // constructor
 	
 	
@@ -210,16 +202,11 @@ public class Main extends JFrame implements ActionListener, FocusListener {
 		// if start button is pressed, right now it clears the inputfield, and creates a new thread from the server class,
 		// which puts a new txtfile in the textarea. Off course this is suppose to send info to the server, when we get that running.
 		else if (e.getSource() == start) {	
-			//TxtPicker tst = new TxtPicker(this);
-			//Thread test = new Thread(tst);
 			txtArea.setText("");
 			inputField.setText("");
 			inputField.requestFocus();
 			right.setVisible(false);
 			wrong.setVisible(false);
-			//test.start();
-			InputToClient.chosenText
-			
 			
 			// makes a request to start the game to the server
 			// need a countdown, TODO
