@@ -7,7 +7,6 @@ import java.io.*;
 
 public class Server {
 	
-	public static Socket socket = null;
 	public static ServerSocket serverSock = null;
 	
 	public static int noOfClients = 0;
@@ -35,6 +34,7 @@ public class Server {
 		while (true) {
 			// Tillader to clients
 			while (noOfClients < 2) {
+				Socket socket = null;
 				// Wait for client to connect
 				try { socket = serverSock.accept();
 				} catch (IOException e1) {
@@ -57,26 +57,23 @@ public class Server {
 				System.out.println("Client connected to server");
 				}
 			// opens for communication
-			if (itIsTimeToAnswer == false && itIsTimeToAnswer == false) {
+			if ((!itIsTimeToAnswer) && (!itIsTimeToAnswer)) {
 			itIsTimeToAnswer = true;
-			listenToClient = true;	
+			listenToClient = true;
+			
+			// virker
+			System.out.println("der åbnes for in og out");
+			System.out.println(noOfClients);
 			}
 			
-			else if (noOfReadyClients == 2) {
+			if (noOfReadyClients == 2) {
 				clientsAreReady = true;
 			}
 			
 			// while game is running
-			else if (winnerFound = true) {
-			ClientConnection.pw.println("Game Over");
-			try {
-				Server.socket.close();
-			} catch (IOException e) {
-				System.out.println("Couldn't close server");
-			
-			}
-			}
-			else {
+			if (winnerFound) {
+				ClientConnection.pw.println("Game Over");
+			} else {
 				try {
 					Thread.sleep(50);
 				} catch (InterruptedException e) {

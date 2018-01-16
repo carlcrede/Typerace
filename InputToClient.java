@@ -29,17 +29,27 @@ public class InputToClient implements Runnable{
 	public InputToClient(Socket sock) {
 		try {
 			bir = new BufferedReader(new InputStreamReader(sock.getInputStream()));
+			System.out.println("buffered reader for client åbnes");
 		} catch (IOException e) {
 			System.out.println("Can't open inputstream to client");
 		}
-		
 	} // inputToClient
 	
+	
 	public void run() {
+		System.out.println("Client input run opens");
+		
 		while (true) {
-			
+			System.out.println("loooooop");
 			try {
+				System.out.println("lige inden bir");
 				serverOutput = bir.readLine();
+				if (serverOutput != null) {
+					System.out.println("Line received!:");
+					System.out.println(serverOutput);
+				} else {
+					System.out.println("Null line received");
+				}
 			} catch (IOException e) {
 				System.out.println("Can't read input from server");
 			}
@@ -55,7 +65,8 @@ public class InputToClient implements Runnable{
 			
 			// skal videre til main
 			// boer goeres paa en bedre maade
-			if (clientInput.length() >25) {
+			if (clientInput.length() > 25) {
+				System.out.println("linje 64 tekst modtaget");
 				chosenText = clientInput;
 				OutputFromClient.textRecived = true;
 			}

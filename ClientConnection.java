@@ -27,13 +27,19 @@ public class ClientConnection implements Runnable {
 	
 	public void run() {
 		
+		try {
+			pw = new PrintWriter(socket.getOutputStream());
+			System.out.println("PrintWriter åbnet");
+		} catch (IOException e) {
+			System.out.println("PrintWriter pw kunne ikke åbnes");
+		}
 		// Send to client
 			while (true) {	
-			if (Server.itIsTimeToAnswer) {
+				if (Server.itIsTimeToAnswer) {
 					// Send responds
 					parseServerOutput(serverOutput);
 				}
-			}
+			} // loop
 		}//run end
 	
 	public void parseServerOutput(String output) {
@@ -41,10 +47,10 @@ public class ClientConnection implements Runnable {
 		//send text
 		if (!textPicked) {
 			ServerTextPicker.getFile();
-			pw.println(ServerTextPicker.chosenText);
+			System.out.println("INFO: Text got - sending to client");
+			pw.print(ServerTextPicker.chosenText);
 			pw.flush();
 			textPicked = true;
-			
 		}
 		
 		else if (Server.clientsAreReady) {

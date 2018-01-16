@@ -9,8 +9,7 @@ public class InputToServer implements Runnable{
 	
 	public String clientOutput;
 	
-	// might be the wrong socket
-	Socket sock = Server.socket;
+	Socket sock;
 	
 	BufferedReader bir;
 	
@@ -29,6 +28,7 @@ public class InputToServer implements Runnable{
 				// Scan for clientInput
 				try {
 					clientOutput = bir.readLine();
+					System.out.println("BufferedInputReader åbnes");
 				} catch (IOException e) {
 					System.out.println("Can't read input from client");
 				}
