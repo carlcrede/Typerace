@@ -65,11 +65,11 @@ public class InputToClient implements Runnable{
 			}
 			
 			else if (clientInput.equals("Game Over")) {
-				if (imTheWinner = false) {
+				if (!imTheWinner) {
 					JOptionPane.showMessageDialog(null, "Du er stadig en fed taber i det her felt", "Du tabte stort", JOptionPane.INFORMATION_MESSAGE);
 				}
 				
-				else if (imTheWinner = true) {
+				else if (imTheWinner) {
 					
 				}
 				

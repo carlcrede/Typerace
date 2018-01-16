@@ -25,7 +25,7 @@ public class InputToServer implements Runnable{
 
 	public void run() {
 		while (true) {
-			if (Server.listenToClient == true) { // vil det virke?
+			if (Server.listenToClient) { // vil det virke?
 				// Scan for clientInput
 				try {
 					clientOutput = bir.readLine();

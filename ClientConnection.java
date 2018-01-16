@@ -29,7 +29,7 @@ public class ClientConnection implements Runnable {
 		
 		// Send to client
 			while (true) {	
-			if (Server.itIsTimeToAnswer == true) {
+			if (Server.itIsTimeToAnswer) {
 					// Send responds
 					parseServerOutput(serverOutput);
 				}
@@ -39,7 +39,7 @@ public class ClientConnection implements Runnable {
 	public void parseServerOutput(String output) {
 		
 		//send text
-		if (textPicked == false) {
+		if (!textPicked) {
 			ServerTextPicker.getFile();
 			pw.println(ServerTextPicker.chosenText);
 			pw.flush();
@@ -47,7 +47,7 @@ public class ClientConnection implements Runnable {
 			
 		}
 		
-		else if (Server.clientsAreReady == true) {
+		else if (Server.clientsAreReady) {
 			pw.println("Start Game");
 			pw.flush();
 		}

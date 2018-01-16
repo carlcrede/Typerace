@@ -26,6 +26,7 @@ public class Server {
 		
 		try {
 			serverSock = new ServerSocket(1234);
+			System.out.println("Server start");
 		} catch (Exception ex) {
 			System.out.println("can't start server");
 		}
