@@ -28,11 +28,12 @@ public class ClientConnection implements Runnable {
 	public void run() {
 		
 		// Send to client
-				while (Server.itIsTimeToAnswer == true) {
+			while (true) {	
+			if (Server.itIsTimeToAnswer == true) {
 					// Send responds
 					parseServerOutput(serverOutput);
 				}
-
+			}
 		}//run end
 	
 	public void parseServerOutput(String output) {

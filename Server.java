@@ -54,21 +54,18 @@ public class Server {
 
 				noOfClients++;
 				}
+			// opens for communication
+			if (itIsTimeToAnswer == false && itIsTimeToAnswer == false) {
+			itIsTimeToAnswer = true;
+			listenToClient = true;	
+			}
 			
-			// starter spillet
-			if (noOfClients == 2) {
-				itIsTimeToAnswer = true;
-				listenToClient = true;
-				
-			}	
-			
-			// or noOfReadyClients == 2
-			if ((playerInputs[0].equals("Ready")) && playerInputs[1].equals("Ready")) {
+			else if (noOfReadyClients == 2) {
 				clientsAreReady = true;
 			}
 			
 			// while game is running
-			while (winnerFound = true) {
+			else if (winnerFound = true) {
 			ClientConnection.pw.println("Game Over");
 			try {
 				Server.socket.close();
@@ -76,6 +73,13 @@ public class Server {
 				System.out.println("Couldn't close server");
 			
 			}
+			}
+			else {
+				try {
+					Thread.sleep(50);
+				} catch (InterruptedException e) {
+					System.out.println("Server couldn't sleep");
+				}
 			}
 		}
 	}

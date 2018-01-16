@@ -24,16 +24,23 @@ public class InputToServer implements Runnable{
 	
 
 	public void run() {
-		while (Server.listenToClient == true) {
-			// Scan for clientInput
-			try {
-				clientOutput = bir.readLine();
-				
-				Thread.sleep(50);
-			} catch (IOException | InterruptedException e) {
-				System.out.println("Can't read input from client");
+		while (true) {
+			if (Server.listenToClient == true) { // vil det virke?
+				// Scan for clientInput
+				try {
+					clientOutput = bir.readLine();
+				} catch (IOException e) {
+					System.out.println("Can't read input from client");
+				}
+				parseClientOutput(clientOutput);
 			}
-			parseClientOutput(clientOutput);
+			else {
+				try {
+					Thread.sleep(50);
+				} catch (InterruptedException e) {
+					System.out.println("InputToServer can't sleep");
+				}
+			}
 		}
 	} // run
 	
