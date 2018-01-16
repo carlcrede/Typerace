@@ -9,7 +9,7 @@ import java.util.Scanner;
 import java.net.ServerSocket;
 import java.io.*;
 
-public class InputToClient {
+public class InputToClient implements Runnable{
 
 	public static boolean listenToServer = true;
 	
@@ -23,7 +23,7 @@ public class InputToClient {
 	
 	public InputToClient(Socket sock) {
 		try {
-			bir = new BufferedReader(new InputStreamReader(Main.sock.getInputStream()));
+			bir = new BufferedReader(new InputStreamReader(sock.getInputStream()));
 		} catch (IOException e) {
 			System.out.println("Can't open inputstream to client");
 		}

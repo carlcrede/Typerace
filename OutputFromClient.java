@@ -40,9 +40,9 @@ public class OutputFromClient implements Runnable {
 	*/
 	 
 	
-	public OutputFromClient (Socket Serversocket) {
+	public OutputFromClient (Socket sock) {
 			// this.hvor main ligger.sock = new Socket(OutputFromClient.adress, OutputFromClient.port)
-			this.sock  = Main.sock;
+			this.sock  = sock;
 
 	}
 	
