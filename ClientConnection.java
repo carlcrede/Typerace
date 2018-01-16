@@ -47,7 +47,7 @@ public class ClientConnection implements Runnable {
 		}
 		
 		else if (Server.clientsAreReady == true) {
-			pw.println("Start game");
+			pw.println("Start Game");
 			pw.flush();
 		}
 		try {
