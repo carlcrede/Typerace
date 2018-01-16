@@ -13,10 +13,6 @@ public class InputToClient {
 
 	public static boolean listenToServer = true;
 	
-	String adress = "localhost";
-	
-	int port = 1234;
-	
 	String serverOutput;
 	
 	public String serverInput;
@@ -27,14 +23,7 @@ public class InputToClient {
 	
 	InputToClient(Socket sock) {
 		try {
-			bir = new BufferedReader(new InputStreamReader(sock.getInputStream()));
-		} catch (IOException e) {
-			System.out.println("Can't open inputstream to client");
-		}
-		
-		try {
-			// skal indlaeses i main
-			this.sock = new Socket(adress,port);
+			bir = new BufferedReader(new InputStreamReader(Main.sock.getInputStream()));
 		} catch (IOException e) {
 			System.out.println("Can't open inputstream to client");
 		}

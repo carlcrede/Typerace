@@ -8,6 +8,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.io.IOException;
+import java.net.Socket;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -31,6 +33,7 @@ public class Main extends JFrame implements ActionListener, FocusListener {
 	Client caret;
 	ImageIcon image, checkImg, wrongImg;
 	GridBagConstraints c;
+	public static Socket sock;
 	
 	final static boolean shouldFill = true;
     final static boolean shouldWeightX = true;
@@ -237,7 +240,22 @@ public class Main extends JFrame implements ActionListener, FocusListener {
 		             "Choose one", "Input",
 		             JOptionPane.INFORMATION_MESSAGE, null,
 		             possibleValues, possibleValues[0]);
-
+		 
+		 // Connection to server
+		 String adress = "localhost";
+			
+			int port = 1234;
+			
+			try {
+				// skal indlaeses i main
+				sock = new Socket(adress,port);
+			} catch (IOException e) {
+				System.out.println("Can't open inputstream to client");
+			} //
+			
+			
+		 
+		 
 		
 		doIt.setTitle("DTUeven Type? 1.0"); // Set title on window
 		doIt.setSize(800, 600); // Set size
@@ -248,6 +266,8 @@ public class Main extends JFrame implements ActionListener, FocusListener {
 		
 	} // main
 
+	
+	
 } // class
   
 		

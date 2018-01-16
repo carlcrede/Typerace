@@ -20,17 +20,15 @@ import java.net.Socket;
 
 public class OutputFromClient implements Runnable {
 	
-	String adress = "localhost";
+	PrintWriter pw;
 	
-	int port = 1234;
-	
-	public static PrintWriter pw;
-	
-	public static String clientOutput;
+	String clientOutput;
 	
 	public static boolean textRecived = false;
 	
 	public static boolean iWin = false;
+	
+	Socket sock;
 	
 	// main skal indeholde
 	
@@ -43,12 +41,8 @@ public class OutputFromClient implements Runnable {
 	 
 	
 	public OutputFromClient (Socket Serversocket) {
-		try {
 			// this.hvor main ligger.sock = new Socket(OutputFromClient.adress, OutputFromClient.port)
-			this.sock  = new Socket(adress,port);
-		} catch (IOException e) {
-			System.out.println("Couldn't connect to server");
-		}
+			this.sock  = Main.sock;
 
 	}
 	
